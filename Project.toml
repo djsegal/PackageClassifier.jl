@@ -1,0 +1,4 @@
+name = "PackageClassifier"
+uuid = "9a4a7dc3-850b-4014-9aa4-11975299e1aa"
+authors = ["Dan Segal <dansegal2@gmail.com>"]
+version = "0.1.0"
