@@ -1,0 +1,1 @@
+manifoldlearn julia packag manifold learn nonlinear dimension reduct method avail isomap diffus map local linear embed lle hessian eigenmap hlle laplacian eigenmap lem local tangent space align ltsa resourc document http manifoldlearningjl readthedoc org index html
