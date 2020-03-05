@@ -1,0 +1,1 @@
+Fuji A lightweight web server written in Julia. Documentation PackageEvaluator Build Status Quickstart using Fuji route ( " /hi " ) do req, res " hi! " end route ( " /hello/:name " ) do req, res string ( " hello, " , req . params[ " name " ], " ! " ) end Fuji . start () License Fuji is available under the MIT license. See the LICENSE file for details.

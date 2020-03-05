@@ -1,0 +1,1 @@
+BlockDiagonals.jl Functionality for working efficiently with block diagonal matrices .

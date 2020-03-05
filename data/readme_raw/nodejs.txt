@@ -1,0 +1,1 @@
+NodeJS Overview This package installs a private copy of Node.js for use in julia packages. The package only exports two functions: nodejs_cmd() returns the full path of the node command. npm_cmd() returns the full path of the npm command. The return value of both functions can be interpolated directly into julia Cmd instances.

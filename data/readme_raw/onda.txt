@@ -1,0 +1,1 @@
+Onda.jl Take The Tour See Other Examples Onda.jl is a Julia package for reading/writing Onda datasets. This package follows the YASGuide . Installation To install Onda for development, run: julia -e 'using Pkg; Pkg.develop(PackageSpec(url="https://github.com/beacon-biosignals/Onda.jl"))' This will install Onda to the default package development directory, ~/.julia/dev/Onda .

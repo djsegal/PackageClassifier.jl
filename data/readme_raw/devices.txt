@@ -1,0 +1,1 @@
+Devices.jl For simplified generation of device CAD files. Documentation Stable and latest versions available. Use "latest" until this package is officially registered. Old documentation available here .

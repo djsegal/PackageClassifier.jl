@@ -1,0 +1,1 @@
+BoltzmannMachinesPlots.jl This is the plotting package accompanying the package BoltzmannMachines.jl . The plotting functionality is based on the Julia package Gadfly .

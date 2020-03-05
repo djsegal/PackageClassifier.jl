@@ -1,0 +1,1 @@
+Reactive Reactive.jl is a package for reactive programming in Julia. Reactive borrows its design from Elm (see Functional Reactive Programming ). Quickstart Pkg.add("Reactive") using Reactive Tutorial and API documentation Issues

@@ -1,0 +1,1 @@
+AtomBase Type and interface definition for atomic environment.

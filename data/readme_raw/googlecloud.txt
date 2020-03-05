@@ -1,0 +1,1 @@
+GoogleCloud.jl Google Cloud APIs for Julia Notes This package thinly wraps the Google Cloud JSON APIs for Julia. See this tutorial for a detailed walk through the Google Storage API.

@@ -1,0 +1,1 @@
+ComplexRegions Paths and regions in the complex plane for Julia Documentation Build Status DOI Paper Installation The package can be installed with Julia's package manager: julia > import Pkg julia > Pkg . add ( " ComplexRegions " ) or just use ] add ComplexRegions at the usual command prompt. Project Status Please open an issue if you encounter any problems.

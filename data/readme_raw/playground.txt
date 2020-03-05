@@ -1,0 +1,1 @@
+Playground.jl A package for managing julia sandboxes like python's virtualenv (with a little influence from pyenv and virtualenvwrapper)

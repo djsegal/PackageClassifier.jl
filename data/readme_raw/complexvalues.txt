@@ -1,0 +1,1 @@
+ComplexValues Polar and Riemann sphere representations of complex numbers in Julia Documentation Build Status Installation The package can be installed with Julia's package manager: julia > import Pkg julia > Pkg . add ( " ComplexValues " ) or simply ] add ComplexValues from the command line. Project Status Please open an issue if you encounter any problems.

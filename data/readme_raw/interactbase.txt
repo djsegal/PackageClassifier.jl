@@ -1,0 +1,1 @@
+InteractBase A package to create interactive widgets in Julia. The user-facing package is Interact See the API reference to see which widgets are implemented.

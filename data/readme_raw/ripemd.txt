@@ -1,0 +1,1 @@
+Ripemd.jl Pure Julia implementation of the Ripemd hashing algorithm. Currently only Ripemd160 is implemented and convenience functions are missing. Usage is very simple: julia > using Ripemd julia > bytes2hex ( ripemd160 ( b " test " )) " 5e52fee47e6b070565f74372468cdc699de89107 "

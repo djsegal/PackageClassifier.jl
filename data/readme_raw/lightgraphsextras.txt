@@ -1,0 +1,1 @@
+LightGraphsExtras Extra functionality for LightGraphs . Includes the following algorithms: Network Interdiction Integration with MatrixDepot.jl Installation Pkg . add ( " LightGraphsExtras " ) Some of the functions require a JuMP solver installed (e.g., Pkg.add("Clp") ). Documentation Documentation for this module is available at Read The Docs .

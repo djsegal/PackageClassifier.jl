@@ -1,0 +1,1 @@
+GoTMSupport Functions in the Julia programming language for supporting the writing of TextMate commands for the Go programming language. Presently it contains support for function and method completion based on gocode . These functions depend on the SimpleParser module and PList module .

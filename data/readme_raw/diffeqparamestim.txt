@@ -1,0 +1,1 @@
+DiffEqParamEstim.jl DiffEqParamEstim.jl is a component package in the DifferentialEquations ecosystem. It holds the parameter estimation tools. While completely independent and usable on its own, users interested in using this functionality should check out DifferentialEquations.jl .

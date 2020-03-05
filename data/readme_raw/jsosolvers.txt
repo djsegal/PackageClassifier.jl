@@ -1,0 +1,1 @@
+JSOSolvers.jl This package provides optimization solvers curated by the JuliaSmoothOptimizers organization.

@@ -1,0 +1,1 @@
+AtlasRobot This small package provides a URDF and meshes for the Boston Dynamics Atlas robot (v5), as well as a convenience function for creating a RigidBodyDynamics.Mechanism .

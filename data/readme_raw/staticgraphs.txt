@@ -1,0 +1,1 @@
+StaticGraphs Memory-efficient, performant graph structures optimized for large networks. Uses LightGraphs . Note: adding/removing edges and vertices is not supported with this graph type.

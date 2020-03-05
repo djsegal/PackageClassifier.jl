@@ -1,0 +1,1 @@
+Netpbm This package implements the FileIO interface for loading and saving binary Netpbm images. Other packages, such as ImageMagick , also support such formats. One advantage of this package is that it does not have any binary (e.g., external library) dependencies---it is implemented in pure Julia.

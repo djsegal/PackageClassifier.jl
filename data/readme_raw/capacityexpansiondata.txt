@@ -1,0 +1,1 @@
+CapacityExpansionData provides a collection of example data for the julia package CapacityExpansion . Data is provided for the regions: GER : Germany CA : California TX : Texas

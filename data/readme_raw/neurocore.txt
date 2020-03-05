@@ -1,0 +1,1 @@
+NeuroCore.jl Core properties for interacting with neuroscience data in Julia.

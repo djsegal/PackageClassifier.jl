@@ -1,0 +1,1 @@
+ReverseRegexes Quick example: julia> using ReverseRegexes julia> rr"\b(using|import)\s+\w+\b" # example of reverse-regex ReverseRegex(r"\b\w+\s+(gnisu|tropmi)\b") julia> rsearch("Foo bar baz", rr"ba[rz]") 9:11 

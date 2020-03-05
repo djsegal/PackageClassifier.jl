@@ -1,0 +1,1 @@
+ComposeVideo Simple video composition for Gadfly.jl from within IJulia.jl . Have a look at the demo . Currently requires ffmpeg to be installed manually. See at Reel.jl to use any object with a writemime for png / jpg.

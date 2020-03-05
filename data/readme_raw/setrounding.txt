@@ -1,0 +1,1 @@
+SetRounding.jl This is a slightly-updated version of the setrounding functionality from the base/rounding.jl file in Julia v0.6, which was deprecated in v0.7 and removed in v1.0.

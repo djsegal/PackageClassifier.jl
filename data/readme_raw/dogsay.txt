@@ -1,0 +1,1 @@
+Dogsay.jl This project is heavily inspired from Xu Kai's Catsay.jl |\_/| | @ @ Woof! | <> _ | _/\------____ ((| |)) | `--' | ____|_ ___| |___.' /_/_____/____/_______| Installation Pkg . add ( " Dogsay " ) Usage In Julia using Dogsay dogsay ( " Woof! " )

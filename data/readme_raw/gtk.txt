@@ -1,0 +1,1 @@
+Julia interface to Gtk+ 3 GUI library GUI building, using the Gtk library: https://www.gtk.org/ Complete Gtk documentation is available at https://developer.gnome.org/gtk/stable Documentation of this package can be found here .

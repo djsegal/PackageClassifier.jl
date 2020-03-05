@@ -1,0 +1,1 @@
+Reduced Row Echelon form computation PackageEvaluator Build Status This small package contains the functions rref and rref! . The code was initially part of Julia and was developed by Jeff Bezanson (see here ).

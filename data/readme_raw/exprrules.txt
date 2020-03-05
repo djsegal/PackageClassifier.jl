@@ -1,0 +1,1 @@
+ExprRules.jl Base functions for generating and optimizing Julia expressions from a grammar. Usage Please see the example notebook . Users may also be interested in expression optimization using ExprOptimization.jl . Maintainers: Ritchie Lee, ritchie@ritchielee.net Mykel Kochenderfer, mykel@stanford.edu

@@ -1,0 +1,1 @@
+ApproxFunFourier.jl Support for Fourier-based spaces in ApproxFun ApproxFun.jl is a package for approximating functions. This package implements Fourier based spaces to ApproxFun.

@@ -1,0 +1,1 @@
+PrivateModules Installation This package is registered in METADATA.jl and so can be installed using Pkg.add Pkg . add ( " PrivateModules " ) Documentation Documentation is generated using Documenter.jl . Project Status PrivateModules.jl is tested against Julia 0.4 and current 0.5-dev .

@@ -1,0 +1,1 @@
+DiffEqUncertainty.jl DiffEqUncertainty.jl is a component package in the DifferentialEquations ecosystem. It holds the utilities for solving uncertainty quantification. Users interested in using this functionality should check out DifferentialEquations.jl . Note: This is a work in progress!

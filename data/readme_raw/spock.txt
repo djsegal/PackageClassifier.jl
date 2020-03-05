@@ -1,0 +1,1 @@
+Spock An interface to Apache Spark for the Julia language. Build Instructions Create a symlink from your spark-assembly jar to lib/spark.jar (or copy it). mkdir lib ln -s ~/Downloads/spark-1.3.0-bin-hadoop2.4/lib/spark-assembly-1.3.0-hadoop2.4.0.jar lib/spark.jar Type make to build spock.jar and run the tests.

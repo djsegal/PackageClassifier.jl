@@ -1,0 +1,1 @@
+ApproxFunOrthogonalPolynomials.jl Support for orthogonal polynomial-based spaces in ApproxFun ApproxFun.jl is a package for approximating functions. This package implements orthogonal polynomial based spaces to ApproxFun, including Chebyshev, Jacobi, Laguerre, and Hermite.

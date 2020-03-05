@@ -1,0 +1,1 @@
+ValkyrieRobot This package provides an easy way to create a RigidBodyDynamics.Mechanism for the NASA Valkyrie robot.

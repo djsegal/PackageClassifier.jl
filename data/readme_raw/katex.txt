@@ -1,0 +1,1 @@
+KaTeX This is a package to download KaTeX and make it available from Julia. The files "auto-render.min.js", "katex.min.css", "katex.min.js" are in the folder KaTeX.assetsdir , whereas KaTeX fonts are in KaTeX.fontsdir = joinpath(KaTeX.assetsdir, "fonts") .

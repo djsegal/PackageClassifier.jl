@@ -1,0 +1,1 @@
+Peaks.jl Peaks.jl is a repository of many (soon) different methods of peak finding for vector data. Contributions welcome.

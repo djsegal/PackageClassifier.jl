@@ -1,0 +1,1 @@
+Polyline.jl A Julia implementation of the algorithm described in Google's Encoded Polyline Format . Polyline.jl with Google Maps

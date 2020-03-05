@@ -1,0 +1,1 @@
+PowerDynOperationPoint.jl Subpackage of PowerDynamics.jl implementing the operation point search incl. interfaces to external power flow solvers

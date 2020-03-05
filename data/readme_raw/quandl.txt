@@ -1,0 +1,1 @@
+Quandl.jl Documentation is provided by Read the Docs. See the Quandl API Help Page for further details about the Quandl API. This package closely follows the nomenclature used by that documentation.

@@ -1,0 +1,1 @@
+EnergyStatistics Energy Statistics (E-Statistics) for Julia. Documentation This package allows to compute the distance covariance dcov , distance variance dvar and distance correlation dcor . See this page for more details and references. Example using EnergyStatistics x = collect ( - 1 : 0.01 : 1 ) y = map (x -> x ^ 4 - x ^ 2 , x) dcor (x, y) ≈ 0.374204050

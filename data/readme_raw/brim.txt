@@ -1,0 +1,1 @@
+BRIM modularity All the functions of this package are now in EcologicalNetwork.jl This package offers ways to optimize the modularity of bipartite networks using BRIM in Julia . It should be reasonably general purpose, but has only be used for biological and ecological datasets so far.

@@ -1,0 +1,1 @@
+LibArchive.jl: A Julia interface for libarchive Usage read a binary file with lzma compression reader = LibArchive.Reader(filename) LibArchive.support_format_raw(reader) LibArchive.support_filter_all(reader) arr = read(reader) close(reader) 

@@ -1,0 +1,1 @@
+ECharts Linux: Windows 64bit: Codecov: Documentation: http://randyzwitch.com/ECharts.jl/ 2019-03-22: Currently, ECharts supports Julia 1.0+ through Jupyter Notebook and the REPL. Supporting Juno and VSCode are planned in the future as WebIO.jl allows

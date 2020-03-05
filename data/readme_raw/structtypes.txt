@@ -1,0 +1,1 @@
+StructTypes Package providing the StructTypes.StructType trait for Julia types to declare the kind of "struct" they are, providing serialization/deserialization packages patterns and strategies to automatically construct objects. Documentation

@@ -1,0 +1,1 @@
+Meshing Documentation Build About This package provides a comprehensive suite of meshing (isosurface extraction) algorithms for use on distance fields and other structured datasets. Algorithms included: Marching Tetrahedra Marching Cubes Naive Surface Nets License Available under the MIT "Expat" License, see LICENSE.md

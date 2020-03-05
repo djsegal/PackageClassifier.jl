@@ -1,0 +1,1 @@
+POMDPToolbox In Julia 0.6 and earlier POMDPToolbox was a collection of tools for use with POMDPs.jl . AS OF JULIA 0.7/1.0, POMDPToolbox HAS BEEN REPLACED BY THE FOLLOWING PACKAGES: POMDPModelTools POMDPPolicies BeliefUpdaters POMDPSimulators For a previous version of this README, see: https://github.com/JuliaPOMDP/POMDPToolbox.jl/blob/v0.2.8/README.md

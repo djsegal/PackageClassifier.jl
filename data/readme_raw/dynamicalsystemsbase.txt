@@ -1,0 +1,1 @@
+Repository containing core system and data definitions used in the library DynamicalSystems.jl . Documentation Travis Gitter

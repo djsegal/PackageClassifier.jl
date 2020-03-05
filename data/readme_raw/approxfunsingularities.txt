@@ -1,0 +1,1 @@
+ApproxFunSingularities.jl Support for spaces with singularities in ApproxFun ApproxFun.jl is a package for approximating functions. This package implements singularity based spaces to ApproxFun, including JacobiWeight and LogWeight .

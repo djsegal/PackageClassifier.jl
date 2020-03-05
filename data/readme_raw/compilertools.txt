@@ -1,0 +1,1 @@
+CompilerTools This is the CompilerTools Julia package, part of the High Performance Scripting project at Intel Labs. The ParallelAccelerator package depends on CompilerTools. See the ParallelAccelerator README for installation and usage information.

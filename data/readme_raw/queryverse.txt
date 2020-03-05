@@ -1,0 +1,1 @@
+Queryverse Overview Queryverse.jl is a meta package that pulls together a number of packages for handling data in julia. You can learn more at https://www.queryverse.org/ . Installation You can add the package with: pkg > add Queryverse

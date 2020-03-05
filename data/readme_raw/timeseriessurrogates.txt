@@ -1,0 +1,1 @@
+TimeseriesSurrogates.jl A Julia library for generating surrogate data. Check out the documentation for information on how to use it.

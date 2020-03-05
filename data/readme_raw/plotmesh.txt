@@ -1,0 +1,1 @@
+PlotMesh.jl Simple mesh plot for JuliaFEM h5-files. julia > using PlotMesh julia > plotmesh ( " test/test_geom.h5 " , outputfn = " test_geom.png " ) width : 400.0 height : 400.0 filename : test_geom . png type : png 

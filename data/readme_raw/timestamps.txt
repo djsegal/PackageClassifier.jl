@@ -1,0 +1,1 @@
+Timestamps.jl Timestamps provides the ability to work with time-based values without many of the constraints inherent in organizing a time series. Multiple dates and values of different types can part of an Array{Timestamp} . Documentation is provided here . julia > Pkg . add ( " Timestamps " )

@@ -1,0 +1,1 @@
+Nullables This package provides the Nullable type from Julia 0.6, which was removed in subsequent versions. It also defines the unsafe_get and isnull functions, and all methods previously implemented in Julia Base: get , eltype , convert , promote , show , map , broadcast , filter , isequal , isless and hash .

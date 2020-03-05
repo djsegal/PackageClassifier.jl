@@ -1,0 +1,1 @@
+stockMonitor.jl An attempt to create a module which constantly collects and performs analyses the stock market.

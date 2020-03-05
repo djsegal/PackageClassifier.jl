@@ -1,0 +1,1 @@
+PropDicts.jl Documentation PropDicts implements dictionaries that handle hierarchical property/value data, e.g. configuration data, with support for deep merging and variable substitution. Documentation for stable version Documentation for development version

@@ -1,0 +1,1 @@
+ILog2 This package provides a fast implementation of ilog2 . ilog2(n::Real) compute the largest m such that 2^m <= n .

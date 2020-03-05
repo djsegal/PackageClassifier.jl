@@ -1,0 +1,1 @@
+AndorSIF This implements support for reading Andor SIF image files in the Julia programming language. Usage using Images load (filename) where filename is a *.sif file.

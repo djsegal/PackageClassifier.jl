@@ -1,0 +1,1 @@
+AbstractRationals.jl Abstractions for Rational Numbers Installation To install, open a Julia REPL and run the following: ]add AbstractRationals

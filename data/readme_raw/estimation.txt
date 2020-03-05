@@ -1,0 +1,1 @@
+Estimation A julialang package for DSP related estimation Amplitude Estimation Amplitude and Phase Estimation of a Sinusoid (APES) [ Li & Stoica 1996 ] Frequency Estimation Quinn Fernandes

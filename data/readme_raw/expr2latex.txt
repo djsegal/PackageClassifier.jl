@@ -1,0 +1,1 @@
+Expr2LaTeX Checkout the IJulia Notebook for the Demo Use with SymEngine.jl A particularly cool use of this is with SymEngine.jl . repr ing a SymEngine expression, outputs basically julia code. You can parse this to get a julia expression, and then you can use Expr2LaTeX to render it. See also Latexify.jl , same rough idea, but taken to the next level.

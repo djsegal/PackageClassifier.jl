@@ -1,0 +1,1 @@
+VISA wrapper for Julia Bare-bones Julia wrapper for VISA libraries, using C calls. Tested with the NI-VISA library. Pulled out of BBN-Q/Instruments.jl into a self-contained module. Installation Download and install the NI-VISA libraries. Pkg . clone ( " https://github.com/PainterQubits/VISA.jl.git " ) Pkg . build ( " VISA " )

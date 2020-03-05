@@ -1,0 +1,1 @@
+ClimateTasks Set of tools that assemble, launch, distribute, and/or schedule common computational tasks related to climate research. This package is in early developement stage when breaking changes are to be expected.

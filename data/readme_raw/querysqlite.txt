@@ -1,0 +1,1 @@
+QuerySQLite This package provides a SQLite backend for Query.jl .

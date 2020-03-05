@@ -1,0 +1,1 @@
+KCenters.jl Provides an implementation of some distance based prototype selection algorithms (based on the K-centers problem ) as well of several functions to perform encoding with these and other related methods.

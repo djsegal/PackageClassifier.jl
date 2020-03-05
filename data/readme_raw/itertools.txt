@@ -1,0 +1,1 @@
+IterTools.jl Common functional iterator patterns (formerly Iterators.jl). Installation Install this package with Pkg.add("IterTools")

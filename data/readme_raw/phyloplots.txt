@@ -1,0 +1,1 @@
+PhyloPlots: to plot phylogenetic trees and networks overview PhyloPlots has utilities to plot tree and network objects from PhyloNetworks using plotting back-ends like Gadfly , and through R via RCall . examples in the documentation for PhyloNetworks , see basic examples here examples to annotate edges here

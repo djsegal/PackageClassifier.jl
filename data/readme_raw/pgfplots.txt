@@ -1,0 +1,1 @@
+PGFPlots This library uses the LaTeX package pgfplots to produce plots. It integrates with IJulia, outputting SVG images to the notebook. Please read the documentation .

@@ -1,0 +1,1 @@
+XLSX.jl Excel file reader/writer coded in pure Julia. Installation julia > Pkg . add ( " XLSX " ) Documentation Package documentation is hosted at https://felipenoris.github.io/XLSX.jl/stable . References ECMA Open XML White Paper ECMA-376 Excel file limits Alternative Packages ExcelFiles.jl ExcelReaders.jl XLSXReader.jl Taro.jl

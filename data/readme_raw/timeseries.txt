@@ -1,0 +1,1 @@
+TimeSeries.jl TimeSeries aims to provide a lightweight framework for working with time series data in Julia. Documentation is provided here .

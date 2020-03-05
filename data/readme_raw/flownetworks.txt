@@ -1,0 +1,1 @@
+FlowNetworks Types and function to represent hydrological flow networks. Installation Pkg . clone ( " git://github.com/scheidan/FlowNetworks.jl.git " ) Usage Not yet documented. See test/runtests.jl for examples.

@@ -1,0 +1,1 @@
+ICU.jl: International Components for Unicode (ICU) wrapper for Julia Julia wrapper for the International Components for Unicode (ICU) libraries . The user-facing functionality has migrated to the UnicodeExtras.jl package.

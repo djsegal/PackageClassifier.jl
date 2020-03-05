@@ -1,0 +1,1 @@
+NLPModelsIpopt.jl A thin IPOPT wrapper for NLPModels. Cite as Abel Soares Siqueira and Dominique Orban. NLPModelsIpopt.jl. Zenodo. 10.5281/zenodo.2629034. 

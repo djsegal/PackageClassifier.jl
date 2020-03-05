@@ -1,0 +1,1 @@
+ImageCore ImageCore is the lowest-level component of the system of packages designed to support image processing and computer vision.

@@ -1,0 +1,1 @@
+Contour.jl Documentation: CI Status: A generic implementation of the marching squares algorithm for tracing contour curves on a scalar 2D field. The main authors of this package are Darwin Darakananda and Tomas Lycken .

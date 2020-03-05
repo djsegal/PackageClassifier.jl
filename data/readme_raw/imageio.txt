@@ -1,0 +1,1 @@
+ImageIO.jl (work in progress) FileIO.jl integration for image files Currently provides: PNGFiles.jl for Portable Network Graphics via libpng - ( Benchmark vs. ImageMagick & QuartzImageIO ) Installation Install with Pkg: pkg > add ImageIO # Press ']' to enter te Pkg REPL mode Usage using FileIO save ( " test.png " , rand (Gray, 100 , 100 )) load ( " test.png " )

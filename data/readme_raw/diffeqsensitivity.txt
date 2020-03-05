@@ -1,0 +1,1 @@
+DiffEqSensitivity.jl DiffEqSensitivity.jl is a component package in the DifferentialEquations ecosystem. It holds the sensitivity analysis utilities. Users interested in using this functionality should check out DifferentialEquations.jl .

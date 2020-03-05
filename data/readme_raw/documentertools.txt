@@ -1,0 +1,1 @@
+DocumenterTools Build Status This package contains utilities for setting up documentation generation with Documenter.jl . For documentation see Documenter.jl s documentation . Installation The package can be added using the Julia package manager. From the Julia REPL, type ] to enter the Pkg REPL mode and run pkg> add DocumenterTools 

@@ -1,0 +1,1 @@
+ModernRoboticsBook.jl Some examples can be found on the Examples page. See the Index for the complete list of documented functions and types. Installation The latest release of ModernRoboticsBook can be installed from the Julia REPL prompt with julia > import Pkg; Pkg . add ( " ModernRoboticsBook " )

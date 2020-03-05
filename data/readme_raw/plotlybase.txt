@@ -1,0 +1,1 @@
+PlotlyBase This is the plot making guts of PlotlyJS.jl Docs for this package are forthcoming, but check out the following sections of the PlotlyJS.jl docs (or just use PlotlyJS.jl): Preliminaries Building Blocks Putting it together up until the discussion of syncplots. Styles

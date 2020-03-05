@@ -1,0 +1,1 @@
+ModularFormsModuloTwo.jl A packge for standard operations on Modular Forms modulo two (mathematical objects). Documentation Read the documentation for more informations. Install in Julia julia> using Pkg julia> Pkg.add("ModularFormsModuloTwo") 

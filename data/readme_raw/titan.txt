@@ -1,0 +1,1 @@
+Titan Write CUDA kernels as normal Julia functions. Copyright 2015 Jon Malmaud + other contributors

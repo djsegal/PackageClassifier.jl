@@ -1,0 +1,1 @@
+Measures.jl This library generalizes and unifies the notion of measures used in Compose , Compose3D , and Escher . It allows building up and representing expressions involving differing types of units that are then evaluated, resolving them into absolute units.

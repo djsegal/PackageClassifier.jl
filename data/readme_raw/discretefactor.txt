@@ -1,0 +1,1 @@
+This mainly contains some operations of discrete factor on factors following Koller's PGM book See /doc for further interest.

@@ -1,0 +1,1 @@
+Taro Taro is a utility belt of functions to work with document files in Julia. It uses Apache Tika , Apache POI and Apache FOP (via JavaCall ) to work with Word, Excel and PDF files. Documentation is available at http://aviks.github.io/Taro.jl/

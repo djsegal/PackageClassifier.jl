@@ -1,0 +1,1 @@
+PumasPlots This package provides plotting utilities (using Plots.jl and StatsPlots.jl) for Pumas.jl - it's a drop-in replacement for Plots.

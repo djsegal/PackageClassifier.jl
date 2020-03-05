@@ -1,0 +1,1 @@
+DEPRECATED! PLEASE USE ReinforcementLearningEnvironments.jl Provides the classic CartPole MountainCar and Pendulum environment for the Julia Reinforcement Learning package . Usage using ReinforcementLearningEnvironmentClassicControl environment = MountainCar () environment = CartPole () environment = Pendulum () See also examples .

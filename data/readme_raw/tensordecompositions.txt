@@ -1,0 +1,1 @@
+TensorDecompositions.jl This is modified fork of TensorDecompositions.jl . TensorDecompositions is a module required by NTFk . For more information, visit tensors.lanl.gov Installation After starting Julia, execute: import Pkg; Pkg . add ( " TensorDecompositions " )

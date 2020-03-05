@@ -1,0 +1,1 @@
+Nextion.jl An unofficial Julia library to communicate with Itead Nextion display . Inspired by: pynextion https://github.com/py3-nextion/pynextion A Python library for Nextion smart display management

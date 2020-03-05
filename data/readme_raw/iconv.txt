@@ -1,0 +1,1 @@
+String encoding conversions in Julia using iconv Installation Make sure iconv is installed on your system, then using Pkg pkg " add Iconv " On Windows, you can install iconv using Scoop scoop install iconv Usage iconv ( " 笨熊 " , " UTF-8 " , " GBK " ) == togbk ( " 笨熊 " ) == g " 笨熊 " iconv ( g " 笨熊 " , " GBK " , " UTF-8 " ) == toutf8 ( g " 笨熊 " ) == b " 笨熊 "

@@ -1,0 +1,1 @@
+ManifoldLearning A Julia package for manifold learning and nonlinear dimensionality reduction Methods Available Isomap Diffusion maps Locally Linear Embedding (LLE) Hessian Eigenmaps (HLLE) Laplacian Eigenmaps (LEM) Local tangent space alignment (LTSA) Resources Documentation: http://manifoldlearningjl.readthedocs.org/en/latest/index.html

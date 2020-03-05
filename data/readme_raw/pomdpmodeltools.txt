@@ -1,0 +1,1 @@
+POMDPModelTools Support tools for writing and working with POMDPs.jl models and solvers. Please read the documentation here for a list of tools: https://JuliaPOMDP.github.io/POMDPModelTools.jl/latest Installation julia> using Pkg; Pkg.add("POMDPModelTools") 

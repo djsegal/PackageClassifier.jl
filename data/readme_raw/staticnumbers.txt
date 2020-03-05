@@ -1,0 +1,1 @@
+StaticNumbers.jl This package provides number datatypes which store their values in type parameters, making them runtime constants. See the documentation for more info.

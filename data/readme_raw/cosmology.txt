@@ -1,0 +1,1 @@
+Cosmology.jl A cosmology calculator for Julia. Installation To install the package: pkg > add Cosmology Then, to load into your session: julia > using Cosmology

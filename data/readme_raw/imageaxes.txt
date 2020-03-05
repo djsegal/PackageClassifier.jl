@@ -1,0 +1,1 @@
+ImageAxes This small package supports the representation of images as AxisArrays to endow the axes with "meaning," and makes programming with such arrays easy via traits . See also the main documentation for JuliaImages .

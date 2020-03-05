@@ -1,0 +1,1 @@
+BioArgParse.jl A simple package extending the capabilities of ArgParse for Biologists. Badges Code quality: This package defines methods which allow ArgParse to parse biological sequences, nucleotides, and other such types from the Bio.jl and BioJulia universe, from command line arguments.

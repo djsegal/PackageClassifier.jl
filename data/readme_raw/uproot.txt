@@ -1,0 +1,1 @@
+UpROOT.jl UpROOT.jl makes it possible to read and write CERN ROOT files without requiring a ROOT installation. It is a wrapper around the Python package uproot , which provides a pure-Python implementation of ROOT I/O. See the documentation for details: Documentation Documentation for stable version Documentation for development version

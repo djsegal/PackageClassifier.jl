@@ -1,0 +1,1 @@
+DCStats.jl These IJulia notebooks provide the material used for the introduction to Julia presented at the Statistical Programming DC Meetup . To follow along with them, you will need to install Julia, IJulia and several other packages. Instructions are found in the Setup notebook .

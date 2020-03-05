@@ -1,0 +1,1 @@
+RecurrenceAnalysis.jl Documentation Travis Gitter RecurrenceAnalysis , which is one of the packages composing DynamicalSystems.jl (but can well be used as a stand-alone), offers tools for computing Recurrence Plots and exploring them within the framework of Recurrence Quantification Analysis. For more details please see our detailed documentation pages .

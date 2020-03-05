@@ -1,0 +1,1 @@
+MurmurHash3: a pure Julia implementation of the MurmurHash3 functions Info Windows Linux & MacOS Package Evaluator CodeCov Coveralls Note: this is currently intended just for internal use by the JuliaString Str types.

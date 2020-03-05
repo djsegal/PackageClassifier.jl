@@ -1,0 +1,1 @@
+RankingDifferences.jl Ranking and ranking difference models. License RankingDifferences.jl is licensed under the MIT License .

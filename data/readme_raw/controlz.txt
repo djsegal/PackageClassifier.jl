@@ -1,0 +1,1 @@
+Controlz.jl A Julia package to explore concepts in process dynamics and control of linear, time-invariant systems using transfer function representations. See documentation here .

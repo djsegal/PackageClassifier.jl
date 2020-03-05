@@ -1,0 +1,1 @@
+Widgets Unified interface for widgets. So far offers: Slider ( 1 : 100 ) Button ( " hi " ) TextField ( " Write! " ) NumberInput ( 66.0 ) RangeSlider ( 1 : 100 ; value = [ 10 , 80 ]) Rendering of the Widgets needs to happen in e.g. JSServe or Makie

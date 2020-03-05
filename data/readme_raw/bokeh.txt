@@ -1,0 +1,1 @@
+Bokeh This project is discontinued. Sorry. See this issue Bokeh Bindings for Julia Note most of these require "master" rather than the released version. Installation: Pkg.add("Bokeh") Docs: bokeh.github.io/Bokeh.jl

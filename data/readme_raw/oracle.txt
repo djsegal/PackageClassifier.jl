@@ -1,0 +1,1 @@
+Oracle.jl This package provides a driver to access Oracle databases using the Julia language, based on ODPI-C bindings. Requirements Julia v1.0 or newer. Oracle's Instant Client . Linux or macOS. C compiler. Documentation Package documentation is hosted at https://felipenoris.github.io/Oracle.jl/stable .

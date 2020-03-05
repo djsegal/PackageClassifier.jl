@@ -1,0 +1,1 @@
+SNAPDatasets LightGraphs.jl -formatted graph files taken from the SNAP Datasets collection. Example usage: using SNAPDatasets g = loadsnap ( :as_caida )

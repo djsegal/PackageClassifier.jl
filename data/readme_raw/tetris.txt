@@ -1,0 +1,1 @@
+Tetris music by: Ghost & Kozmos Installation Pkg . add ( " Tetris " ) Usage Standard usage is: using Tetris Tetris.setup() However, if you have a long running function, this might be more your speed: using Tetris @tetris slow_func() Controls For the most part, they match tetris friends .

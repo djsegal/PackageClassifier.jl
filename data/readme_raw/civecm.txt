@@ -1,0 +1,1 @@
+Cointegration in Vector Autoregressive Models

@@ -1,0 +1,1 @@
+LinearAlgebraicRepresentation.jl Official Julia implementation of LAR , the Linear Algebraic Representation for Solid Modeling. Installing using Pkg add ( " LinearAlgebraicRepresentation " ) # Pkg.add("LinearAlgebraicRepresentation") on julia prior to v0.7 Documentation Go to the documentation page

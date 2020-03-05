@@ -1,0 +1,1 @@
+Remez.jl This is an implementation of the Remez algorithm for computing minimax polynomial approximations to functions. It is largely based on code by ARM , but updated for newer Julia versions and built into a package. The main function is ratfn_minimax , see help for more details.

@@ -1,0 +1,1 @@
+Bloomberg.jl Bloomberg wraps the Bloomberg Open Market Data Initiative API in Julia. Documentation is planned here . BLOOMBERG is a registered trademark of Bloomberg Finance L.P. or its affiliates.

@@ -1,0 +1,1 @@
+Model selection in julia Credits The ModelSelection module, was written primarily by Demian Panigo , Adán Mauri Ungaro , Nicolás Monzón and Valentín Mari . The ModelSelection.jl module was inpired by GSReg for Stata, written by Pablo Gluzmann and Demian Panigo .

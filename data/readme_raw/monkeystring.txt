@@ -1,0 +1,1 @@
+MonkeyString Inspired by SpiderMonkey's approach to strings.

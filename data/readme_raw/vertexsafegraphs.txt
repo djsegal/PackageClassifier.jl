@@ -1,0 +1,1 @@
+VertexSafeGraphs A wrapper type built for LightGraphs.jl , maintaining the vertex numbers even after deletion. Designed to use with contraction algorithms.

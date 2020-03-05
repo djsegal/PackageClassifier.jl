@@ -1,0 +1,1 @@
+Graph500 This Package is a Benchmarking Package for LightGraphs.jl to send performance data to Graph500. Graph500 benchmarking scheme could be found here

@@ -1,0 +1,1 @@
+CloudWatchLogs CloudWatchLogs.jl provides easy access to CloudWatch Log Streams, and provides a Memento log handler. The documentation linked above contains usage examples, API documentation, and instructions for setting up a stack for testing.

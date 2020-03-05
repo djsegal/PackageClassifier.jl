@@ -1,0 +1,1 @@
+Tools for extracting MLBAM PITCHf/x data. Install julia -e ' using Pkg; Pkg.add("Pitchjx") ' How to use Extract specific date's PITCHf/x data using Pitchjx data = pitchjx ( " 2018-10-20 " ) Extract Multiple dates' PITCHf/x data using Pitchjx data = pitchjx ( " 2018-10-20 " , " 2018-10-22 " ) Reference The Anatomy of a Pitch:Doing Physics with PITCHf/x Data

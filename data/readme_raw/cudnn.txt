@@ -1,0 +1,1 @@
+Note: This package is being phased out. The same functionality is available with CuArrays . CUDNN Julia wrapper for NVIDIA's cuDNN library. Supported features convolutions pooling batch normalization softmax (4D) See tests for examples of usage.

@@ -1,0 +1,1 @@
+NLIDatasets.jl NLIDatasets.jl is a Julia package for working with Natural Language Inference datasets. Datasets SNLI (see paper ) MultiNLI (see paper ) XNLI (see paper ) SciTail (see paper ) HANS (see paper ) BreakingNLI (see paper ) ANLI (see paper ) Usage See the documentation . using NLIDatasets : SNLI train, dev = SNLI . train_tsv (), SNLI . dev_tsv ()

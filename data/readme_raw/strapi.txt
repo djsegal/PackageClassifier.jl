@@ -1,0 +1,1 @@
+StrAPI Info Windows Linux & MacOS Package Evaluator CodeCov Coveralls This package provides the base API, which the other packages in JuliaString can all extend It provides a cleaner API (IMO) for many of the character and string related functions. See the documentation in the Strs package

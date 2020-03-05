@@ -1,0 +1,1 @@
+About a Project The project was developed for Topicos Especiais em Otimização. Language: Julia About Course Tópicos Especiais em Otimização - Curso de Ciência da Computação - Departamento de Ciência da Computação Universidade Federal Rural do Rio de Janeiro

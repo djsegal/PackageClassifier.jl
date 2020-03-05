@@ -1,0 +1,1 @@
+COBS.jl Consistent Overhead Byte Stuffing, COBS , is an algorithm for encoding data bytes typically used when transferring data via serial ports (e.g. to an Arduino). This is a Julia implementation that works.

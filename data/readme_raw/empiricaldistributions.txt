@@ -1,0 +1,1 @@
+EmpiricalDistributions.jl A Julia package for empirical probability distributions. Currently implements uni- and multivariate binned distributions, backed by StatsBase.jl histograms. Documentation Documentation for stable version Documentation for development version

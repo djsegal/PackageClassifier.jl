@@ -1,0 +1,1 @@
+PowerLaws.jl This package is implemented according to POWER-LAW DISTRIBUTIONS IN EMPIRICAL DATA Documentation is in Doc folder. Inpired by python powerlaw package and R poweRlaw package

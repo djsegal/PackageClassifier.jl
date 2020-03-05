@@ -1,0 +1,1 @@
+Proof of concept: Julia wrapper for VTK Background Several new functions have been added to Clang.jl to allow querying the vtable index and mangled name for C++ methods. Please see the branch wip_testing in Clang.jl and this ticket for implementation details. Examples

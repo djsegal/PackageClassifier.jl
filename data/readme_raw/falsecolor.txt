@@ -1,0 +1,1 @@
+FalseColor.jl The aim of this package is to provide tools to convert matrices of data into nice looking images that can then be saved using imwrite. I will start by copying the functionality in two of my MATLAB packages: real2rgb and sc .

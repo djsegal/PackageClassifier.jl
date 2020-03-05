@@ -1,0 +1,1 @@
+GtkReactive GtkReactive is designed to simplify the creation of graphical user interfaces (GUIs) using Gtk and Julia. GtkReactive descended from GtkInteract , and mimics aspects of the design of Interact . To learn how to use this package, please see the documentation:

@@ -1,0 +1,1 @@
+RationalSimplex.jl Julia implementation of the Simplex algorithm for rational numbers . Intended for educational and experimental purposes only. See code for documentation, or tests for examples. Last updated on 2018/07/01, tested with Julia 0.7-beta.

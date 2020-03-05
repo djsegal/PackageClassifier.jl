@@ -1,0 +1,1 @@
+JSServe Uses Hyperscript to create HTML descriptions, and allows to execute Javascript & building of widgets: https://nextjournal.com/sdanisch/jsserve

@@ -1,0 +1,1 @@
+NormalsMaps.jl Package for generating and manipulating normal maps from images, using Julia. Simple Example brick = load( " brick_input.png " ) res = NormalGen(brick) ` Input Output base = load( " normal_base.png " ) overlay = load( " normal_overlay.png " ) res = BlendNormalsRNM(base,overlay) Base Overlay Result

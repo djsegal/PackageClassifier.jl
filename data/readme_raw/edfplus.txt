@@ -1,0 +1,1 @@
+EDFPlus.jl Julia for handling BDF+ and EDF+ EEG and similar signal data files. Heavily influenced by the C EEG library edflib. License: 2-clause BSD. Installation: To install from a Julia REPL command line session: using Pkg Pkg.add("EDFPlus")) Note that the test files include a 23 mb test file. You may need to allow extra time for that to download when installing.

@@ -1,0 +1,1 @@
+Documentation Build Status Coverage SDDP.jl is a package for solving large multistage convex stochastic programming problems using stochastic dual dynamic programming . You can find the documentation at https://odow.github.io/SDDP.jl/latest/ . If you need help, file a Github issue: https://github.com/odow/SDDP.jl/issues/new

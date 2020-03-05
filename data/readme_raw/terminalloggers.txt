@@ -1,0 +1,1 @@
+TerminalLoggers TerminalLoggers provides a logger type TerminalLogger which can format your log messages in a richer way than the default ConsoleLogger which comes with the julia standard Logging library. Read the documentation for more information.

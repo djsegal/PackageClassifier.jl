@@ -1,0 +1,1 @@
+Getopt.jl is a Julia package that parses command-line arguments with an API nearly identical to getopt in Python . To install: julia -e ' using Pkg; Pkg.add("Getopt") ' To use: for (opt, arg) in getopt (ARGS, " xy: " , [ " foo " , " bar= " ]) @show (opt, arg) end @show ARGS

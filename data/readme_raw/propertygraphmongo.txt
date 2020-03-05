@@ -1,0 +1,1 @@
+PropertyGraphMongo PropertyGraphMongo.jl is a Mongo storage provider for the PropertyGraph.jl Julia package. PropertyGraphMongo PropertyGraphMongo.jl is in early development and not yet ready for use.

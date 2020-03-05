@@ -1,0 +1,1 @@
+Julia Implementation of the Sauter-Schwab quadrature rules SauterSchwabQuadrature References [1] Sauter S. Schwab C., "Boundary Element Methods (Springer Series in Computational Mathematics)", Chapter 5, Springer, 2010

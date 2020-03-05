@@ -1,0 +1,1 @@
+ConstructionBase ConstructionBase is a very lightwight package, that provides primitive functions for construction of objects: setproperties (obj :: MyType , patch :: NamedTuple ) constructorof (MyType) These functions can be overloaded and doing so provides interoperability with the following packages: Flatten.jl Setfield.jl BangBang.jl

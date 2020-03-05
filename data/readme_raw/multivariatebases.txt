@@ -1,0 +1,1 @@
+Multivariate Bases Documentation Build Status Social This package provides a standardized API for multivariate polynomial bases based on the MultivariatePolynomials API. Documentation STABLE — most recently tagged version of the documentation. LATEST — in-development version of the documentation.

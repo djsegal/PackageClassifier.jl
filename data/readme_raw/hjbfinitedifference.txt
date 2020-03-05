@@ -1,0 +1,1 @@
+The repository is no longer maintained. Please go to the EconPDEs repository for an up-to-date` version, that includes a PDE solver to solve a vast array of PDEs in Julia (including Consumption/Saving Models, Investment Models, and Asset Pricing Models).

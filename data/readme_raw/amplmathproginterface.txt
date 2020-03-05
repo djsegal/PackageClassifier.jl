@@ -1,0 +1,1 @@
+AMPLMathProgInterface Implements the MathProgBase NLP interface using AMPL to compute derivatives of models. Waiting for ampl.jl be released before we tidy this up, but ask on the julia-opt list if you're interested.

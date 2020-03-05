@@ -1,0 +1,1 @@
+GRUtils This package is an experimental refactoring of the module jlgr from GR.jl , intended to provide the main utilities of jlgr in a more "Julian" and modular style, easy to read, and facilitate code contributions by others. Find all the information about how GRUtils works its documentation pages , and feel free to submit your issues and pull requests !

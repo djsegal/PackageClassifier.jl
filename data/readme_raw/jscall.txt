@@ -1,0 +1,1 @@
+JSCall Allows to directly call Javascript libraries, just as if they were Julia libraries. Example: full notebook

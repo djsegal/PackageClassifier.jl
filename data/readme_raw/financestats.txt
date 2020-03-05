@@ -1,0 +1,1 @@
+FinancialAnalytics.jl Commonly used metrics for analyzing time series returns. Planned documentation is here .

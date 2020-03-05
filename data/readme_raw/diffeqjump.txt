@@ -1,0 +1,1 @@
+DiffEqJump.jl DiffEqJump.jl is a component package in the DifferentialEquations ecosystem. It holds the utilities for building jump equations, like Gillespie SSA and jump diffusions. Users interested in using this functionality should check out DifferentialEquations.jl .

@@ -1,0 +1,1 @@
+GtkSourceWidget GtkSourceWidget.jl is a Julia wrapper for the Gtk library GtkSourceView that allows showing source code documents (see https://wiki.gnome.org/Projects/GtkSourceView ).

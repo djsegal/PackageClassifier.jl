@@ -1,0 +1,1 @@
+StatsModels Basic functionality for specifying, fitting, and evaluating statistical models in Julia. Documentation: Originally part of DataFrames.jl .

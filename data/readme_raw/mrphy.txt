@@ -1,0 +1,1 @@
+MRphy.jl This module intends to provide some basic tools for MR physics simulations. Installation MRphy.jl is registered. Simply install with pkg> add MRphy Usage Check test/runtests.jl to see usages of this early version module. Related packages MRphy.jl was inspired by BlochSim.jl .

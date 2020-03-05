@@ -1,0 +1,1 @@
+This is a very simple package, which will generate a badge in the style of ForTheBadge .

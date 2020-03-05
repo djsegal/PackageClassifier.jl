@@ -1,0 +1,1 @@
+Colors Documentation Build Status Code Coverage This library provides a wide array of functions for dealing with color. This includes conversion between colorspaces, measuring distance between colors, simulating color blindness, parsing colors, and generating color scales for graphics.

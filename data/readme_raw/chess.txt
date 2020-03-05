@@ -1,0 +1,1 @@
+Chess A Julia library for computer chess. Visit the documentation for more details.

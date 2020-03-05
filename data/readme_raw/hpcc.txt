@@ -1,0 +1,1 @@
+hpcc.jl Implementations of the HPC Challenge kernels in Julia . Note reference implementations kernels here maintained by @luszczek

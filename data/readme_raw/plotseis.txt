@@ -1,0 +1,1 @@
+PlotSeis.jl A visualization tool for SeisIO.jl based on PyPlot . Installation | Documentation Ensure Python is installed and working on your machine. Install matplotlib for Python. Run these commands from the Julia prompt: ] add https://github.com/jpjones76/PlotSeis.jl ^C using PlotSeis 

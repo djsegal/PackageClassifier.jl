@@ -1,0 +1,1 @@
+ChrBase Info Windows Linux & MacOS Package Evaluator CodeCov Coveralls This provides support for different types of characters, using a parameterized Chr type. (and for v0.6.2, adds the AbstractChar type, which was later added to v0.7/master) See the documentation in the Strs package

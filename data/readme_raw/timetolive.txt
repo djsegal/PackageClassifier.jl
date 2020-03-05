@@ -1,0 +1,1 @@
+TimeToLive An associative TTL cache. julia > using Dates, TimeToLive julia > ttl = TTL {Int, String} ( Second ( 1 )) TTL{Int64,String,Second} with 0 entries julia > ttl[ 0 ] = " foo " " foo " julia > ttl[ 0 ] " foo " julia > sleep ( 2 ) julia > get (ttl, 0 , " bar " ) " bar "

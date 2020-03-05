@@ -1,0 +1,1 @@
+Taarruz Adversarial Attack Tool for Knet . Implemented Attacks FGSM : Fast Gradient Sign Method ( paper ). Too see documentation, type @doc method_name in Julia REPL (e.g. @doc FGSM ). Example Notebooks lenet-fgsm : FGSM attack to Lenet trained on MNIST dataset.

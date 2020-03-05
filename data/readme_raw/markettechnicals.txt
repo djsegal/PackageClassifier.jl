@@ -1,0 +1,1 @@
+MarketTechnicals.jl A toolkit for technical analysis of financial time series in Julia. Development Setup Documentation We use Documenter.jl as our doc builder, please install it at first. Pkg . add ( " Documenter " ) Then, build it. $ cd docs $ make The generated doc locates at docs/build .

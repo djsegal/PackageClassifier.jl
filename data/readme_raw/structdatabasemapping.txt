@@ -1,0 +1,1 @@
+Installation ] add https : // github . com / lucianolorenti / StructDatabaseMapping . jl . git Compatibility SQLite PostgreSQL Redis Possibly every relational DB that supports the DBInterface

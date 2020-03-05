@@ -1,0 +1,1 @@
+PCRE2 Info Windows Linux & MacOS Package Evaluator CodeCov Coveralls The PCRE2 package implements a low-level API for accessing the PCRE libraries (8, 16, and 32-bit) It is intended to replace Base.PCRE , which is not threadsafe, only supports UTF-8, and is using an old version of the PCRE library (10.30, current version is 10.31)

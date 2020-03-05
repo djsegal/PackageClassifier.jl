@@ -1,0 +1,1 @@
+NaturalSort Natural Sort Order in Julia Usage Pass lt=natural to a sorting function such as sort . Example julia > using NaturalSort julia > sort ([ " a1 " , " a2 " , " a10 " ]) 3 - element Array{String, 1 } : " a1 " " a10 " " a2 " julia > sort ([ " a1 " , " a2 " , " a10 " ], lt = natural) 3 - element Array{String, 1 } : " a1 " " a2 " " a10 "

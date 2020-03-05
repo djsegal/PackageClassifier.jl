@@ -1,0 +1,1 @@
+ApproxFunBase.jl Core functionality of ApproxFun ApproxFun.jl is a package for approximating functions. This package contains core functionality used by the various components of ApproxFun. It is possible to add spaces on top of this without the rest of ApproxFun, but this is undocumented for now.

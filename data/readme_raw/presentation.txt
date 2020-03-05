@@ -1,0 +1,1 @@
+Presentation.jl Installation (v1.1) pkg> add Presentation Usage using Presentation render ( " /path/to/filename.md " ) Use next() or previous() to move between slides. Motivation The motivation was to build a presentation tool that uses the text interface in a terminal. Other similar tools: mdp patat qov vtmc

@@ -1,0 +1,1 @@
+This package extends JuliaFEM functionalities for plane contact mechanics using mortar methods and automatic differentiation.

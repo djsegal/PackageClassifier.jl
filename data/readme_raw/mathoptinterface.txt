@@ -1,0 +1,1 @@
+MathOptInterface Documentation Build Status Social An abstraction layer for mathematical optimization solvers. Replaces MathProgBase .

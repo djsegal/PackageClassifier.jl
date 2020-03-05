@@ -1,0 +1,1 @@
+CategoricalArrays.jl Documentation: This package provides tools for working with categorical variables, both with unordered (nominal variables) and ordered categories (ordinal variables), optionally with missing values.

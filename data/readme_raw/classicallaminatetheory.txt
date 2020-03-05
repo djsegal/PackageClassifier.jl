@@ -1,0 +1,1 @@
+ClassicalLaminateTheory Laminate model Laminate model used in EDX course "AA432x Composite Materials Overview for Engineers" by K.Y.Lin.

@@ -1,0 +1,1 @@
+OptimizingIR.jl "Compilers Keep on compilin' Cause it won't be too long" Wonder, S. Installation From a Julia session, run: julia > using Pkg julia > Pkg . add ( " OptimizingIR " ) Documentation Package documentation is hosted at https://felipenoris.github.io/OptimizingIR.jl/stable/ .

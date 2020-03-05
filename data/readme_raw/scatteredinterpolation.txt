@@ -1,0 +1,1 @@
+ScatteredInterpolation.jl Interpolation of scattered data in Julia Documentation Build & Testing Status Installation ScatteredInterpolation.jl is registered in the general registry. To install, run julia> ]add ScatteredInterpolation followed by using ScatteredInterpolation to load the package. Documentation For more information, see the Documentation .

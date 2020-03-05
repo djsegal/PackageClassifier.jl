@@ -1,0 +1,1 @@
+CalculusWithJulia Julia package to accompany Calculus with Julia notes.

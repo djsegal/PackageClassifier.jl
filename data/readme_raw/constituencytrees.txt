@@ -1,0 +1,1 @@
+ConstituencyTrees.jl ConstituencyTrees.jl is a Julia package for working with constituency tree (also called phrase structure tree) structures of natural language (based on nltk 's tree module).

@@ -1,0 +1,1 @@
+SeriesAccelerators.jl Accelerate convergence of mathematical series using the Shanks or van Wijngaarden transformations.

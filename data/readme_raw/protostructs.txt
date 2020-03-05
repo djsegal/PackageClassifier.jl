@@ -1,0 +1,1 @@
+ProtoStructs You are developing a new datastructure and are tired of restarting everytime you change your mind? ProtoStructs lets you have structs which can have any fields at construction. Like: using ProtoStructs @proto DevType a = DevType (a = 1 , b = 2.0 , c = " 3 " ) b = DevType (d = complex ( 1 ), e = true ) It is actually just a typed NamedTuple .

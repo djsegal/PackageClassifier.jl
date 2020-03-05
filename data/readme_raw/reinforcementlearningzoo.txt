@@ -1,0 +1,1 @@
+"Make It Work Make It Right Make It Fast" ― KentBeck This project aims to provide some implementations of the most typical reinforcement learning algorithms.

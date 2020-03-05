@@ -1,0 +1,1 @@
+SolverTools A framework to build novel optimization algorithms in Julia. Cite us Dominique Orban and Abel Soares Siqueira. SolverTools.jl. Zenodo. http://doi.org/10.5281/zenodo.2592349 Installation add SolverTools 

@@ -1,0 +1,1 @@
+DSP.jl DSP.jl provides a number of common digital signal processing routines in Julia. These include: Periodogram estimation Filter design and filtering Estimation Convolution Linear Predictive Coding Window functions Utility functions More details can be found in the Online Documentation . The documentation for pre-releases (master) can be found here .

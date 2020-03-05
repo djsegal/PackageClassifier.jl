@@ -1,0 +1,1 @@
+ConjugatePriors.jl A Julia package to support conjugate prior distributions.

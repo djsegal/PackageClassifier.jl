@@ -1,0 +1,1 @@
+CalibrationTests.jl Hypothesis tests of calibration. Overview This package implements different hypothesis tests for calibration of probabilistic classification models in the Julia language.

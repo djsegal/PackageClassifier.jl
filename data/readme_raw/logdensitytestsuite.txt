@@ -1,0 +1,1 @@
+LogDensityTestSuite.jl Implementation of log densities as callable object that support the LogDensityProblems.jl interface with gradients, generating “samples” deterministically using low-discrepancy sequences. This package was developed mainly for testing DynamicHMC.jl , but other projects may also find it useful.

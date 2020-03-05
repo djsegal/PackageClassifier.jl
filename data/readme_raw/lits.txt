@@ -1,0 +1,1 @@
+LITS.jl Low Inertia Transient Simulation Toolbox for Power Systems To install and develop run the following: julia > ] add LITS The use examples can be found in the LITS-Examples repository

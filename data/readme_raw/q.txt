@@ -1,0 +1,1 @@
+Q.jl - Julia for kdb+ Server side q)J)println(42) 42 Client side With kdb+ running on a local port 8888: julia> using Q julia> hget(("localhost", 8888), "([]s:`a`b`c;a:11 22 33)") 3×2 Q.K_Table │ Row │ s │ a │ ├─────┼───┼────┤ │ 1 │ a │ 11 │ │ 2 │ b │ 22 │ │ 3 │ c │ 33 │ julia> ans isa DataFrames.AbstractDataFrame true 

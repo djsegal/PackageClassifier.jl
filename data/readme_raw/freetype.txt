@@ -1,0 +1,1 @@
+FreeType.jl FreeType bindings for Julia . Example using FreeType library = Array (FT_Library, 1 ) error = FT_Init_FreeType (library) assert (error == 0 )

@@ -1,0 +1,1 @@
+BNMF Bayesian Non-negative Matrix Factorization models Gamma Process Non-negative Matrix Factorization (GaP-NMF) Julia translation of the MATLAB code for GaP-NMF as in Bayesian Nonparametric Matrix Factorization for Recorded Music by Matthew D. Hoffman et al. in ICML 2010. How GaP-NMF works on real data GaP-NMF | nbviewer

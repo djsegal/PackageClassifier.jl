@@ -1,0 +1,1 @@
+Build Status Help Biomodelling.jl Authors: Ayoub Lasri ( lasriay@gmail.com ) Marc Sturrock Framework for stochastic modelling in systems biology Usage questions can be posted in: Julia Community

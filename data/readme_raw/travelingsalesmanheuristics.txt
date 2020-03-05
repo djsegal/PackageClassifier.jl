@@ -1,0 +1,1 @@
+TravelingSalesmanHeuristics TravelingSalesmanHeuristics is a Julia package containing simple heuristics for the traveling salesman problem . This package is both my first Julia package and my first effort in open source software, so I welcome any contributions, suggestions, feature requests, pull requests, criticisms, etc.

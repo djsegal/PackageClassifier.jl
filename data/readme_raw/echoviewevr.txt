@@ -1,0 +1,1 @@
+EchoviewEvr The Echoview 2D Region definition file format is described on the Echoview support web site . This project is a Julia package that reads Echoview EVR files. r = regions(filename) r[1].classification r[1].regiontype An example file and tests are provided Pkg.test("EchoviewEvr") 

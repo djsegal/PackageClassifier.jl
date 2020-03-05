@@ -1,0 +1,1 @@
+Faker Generator of fake data for julia. Installing Pkg > add Faker Example using Faker Faker . email () # => "kirsten.greenholt@corkeryfisher.info" Roadmap All contributions and suggestions are welcome !!!! Version 0.2.3 Unicode symbol generator Version 0.2.4 Possibility of creating a generator

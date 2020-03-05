@@ -1,0 +1,1 @@
+SLEEFPirates This library is a fork of SLEEF.jl, which is a port of SLEEF. Musm and Shibatchi deserve the lion's share of the credit behind this library. This libraries' aim is provide efficient SIMD-able special functions.

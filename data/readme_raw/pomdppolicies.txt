@@ -1,0 +1,1 @@
+POMDPPolicies A collection of default policy types for POMDPs.jl . Installation using Pkg Pkg . add ( " POMDPPolicies " )

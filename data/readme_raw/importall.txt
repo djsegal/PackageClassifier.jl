@@ -1,0 +1,1 @@
+ImportAll.jl The ImportAll.jl package provides the @importall macro to replace the importall command from Julia 0.6, which was removed in Julia 1.0 . Tutorial using ImportAll @importall(Base) This will import every function in Base. This is generally not a good thing to do but is sometimes necessary.

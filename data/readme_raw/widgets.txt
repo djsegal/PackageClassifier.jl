@@ -1,0 +1,1 @@
+Widgets This package allows to create custom widgets using the JuliaGizmos packages and should be used in combination with the Interact package. Documentation is available here as part of the Interact docs.

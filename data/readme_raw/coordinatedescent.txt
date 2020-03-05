@@ -1,0 +1,1 @@
+CoordinateDescent.jl Implements coordinate descent for a smooth function plus penalty that decomposes across coordinates. Curently a naive version of the active-set coordinate descent is implemented that works for L1 and weighted L1 penalty. Examples: Lasso Sqrt-Lasso Scaled-Lasso Package depends on ProximalBase.jl

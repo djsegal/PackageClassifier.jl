@@ -1,0 +1,1 @@
+Cookbook.jl A Julia package to aid in the creation of data processing pipelines. Draws inspiration from GNU Make. See test/runtests.jl for example usage.

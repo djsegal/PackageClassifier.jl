@@ -1,0 +1,1 @@
+ReduceLinAlg.jl LINALG: Linear algebra package A selection of functions that are useful in the world of linear algebra Upstream REDUCE package by Matt Rebbeck. This Julia package relies on the Reduce.jl parser generator, Julia docs ( stable / latest ). Meta-package ReduceAlgebra.jl , upstream docs ( LINALG / pdf ), Julia docs ( stable / latest )

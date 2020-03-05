@@ -1,0 +1,1 @@
+DiffEqMonteCarlo.jl DiffEqMonteCarlo.jl is a component package in the DifferentialEquations ecosystem. It holds methods for performing and analyzing Monte Carlo simulations. Users interested in using this functionality should check out DifferentialEquations.jl .

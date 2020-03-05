@@ -1,0 +1,1 @@
+Coulter Interfacing with Beckman-Coulter Multisizer/Z2 Coulter Counter files (.#=Z2, etc) in Julia Usage Run the following in the Julia REPL using Pkg Pkg . add ( " Coulter " ) To use the package do the following using Coulter loadZ2 ( " path to file here.#=Z2 " , " sample name " )

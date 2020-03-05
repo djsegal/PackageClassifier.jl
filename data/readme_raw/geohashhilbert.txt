@@ -1,0 +1,1 @@
+GeohashHilbert.jl Julia implementation of Hilbert-curve based geohashing. Designed to be interoperable with a similar Python package .

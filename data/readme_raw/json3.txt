@@ -1,0 +1,1 @@
+JSON3.jl Documentation Yet another JSON package for Julia; this one is for speed and slick struct mapping TL;DR # builtin reading/writing JSON3 . read (json_string) JSON3 . write (x) # custom types JSON3 . read (json_string, T; kw ... ) JSON3 . write (x)

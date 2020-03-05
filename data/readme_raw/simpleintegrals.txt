@@ -1,0 +1,1 @@
+SimpleIntegrals Usage using SimpleIntegrals xs = sort! ( randn ( 100 )) ys = randn ( 100 ) integral (xs, ys)

@@ -1,0 +1,1 @@
+LearnBase This package is embodies a community effort to provide common types and function-definitions for Machine Learning packages in Julia. See src/LearnBase.jl for more information

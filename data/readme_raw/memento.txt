@@ -1,0 +1,1 @@
+Memento.jl Memento is flexible hierarchical logging library for julia. Installation julia > Pkg . add ( " Memento " ) Quick Start Documentation Please checkout the hosted docs for more details.

@@ -1,0 +1,1 @@
+Bhāskara Provides Bhaskara I's sine approximation formula bsin (θ) = 16 (π - θ)θ / ( 5 π ^ 2 - 4 (π - θ)θ) # error < 0.002, θ ∈ [0,π] There is also b2sin(θ) for θ ∈ [-π,π] , and Bhaskara.sin(θ) for θ ∈ 𝐑 , by inserting appropriate mod(,2π) and sign()*abs() bits. Similarly bcos(θ) is for θ ∈ [-π/2,π/2] , and Bhaskara.cos(θ) for all θ ∈ 𝐑 .
