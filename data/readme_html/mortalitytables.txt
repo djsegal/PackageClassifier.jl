@@ -1,0 +1,157 @@
+<div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content p-5" itemprop="text"><h1><a id="user-content-mortalitytables" class="anchor" aria-hidden="true" href="#mortalitytables"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MortalityTables</h1>
+<p><a href="https://alecloudenback.github.io/MortalityTables.jl/stable" rel="nofollow"><img src="https://camo.githubusercontent.com/f7b92a177c912c1cc007fc9b40f17ff3ee3bb414/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f63732d737461626c652d626c75652e737667" alt="Stable" data-canonical-src="https://img.shields.io/badge/docs-stable-blue.svg" style="max-width:100%;"></a>
+<a href="https://alecloudenback.github.io/MortalityTables.jl/dev" rel="nofollow"><img src="https://camo.githubusercontent.com/3e353c26ddfe819150acbc732248f4f2a37f5175/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f63732d6465762d626c75652e737667" alt="Dev" data-canonical-src="https://img.shields.io/badge/docs-dev-blue.svg" style="max-width:100%;"></a>
+<a href="https://travis-ci.com/JuliaActuary/MortalityTables.jl" rel="nofollow"><img src="https://camo.githubusercontent.com/7cb6497cd96eca931b8ddfd9b4f47239f913ad4a/68747470733a2f2f7472617669732d63692e636f6d2f4a756c6961416374756172792f4d6f7274616c6974795461626c65732e6a6c2e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.com/JuliaActuary/MortalityTables.jl.svg?branch=master" style="max-width:100%;"></a>
+<a href="https://codecov.io/gh/JuliaActuary/MortalityTables.jl" rel="nofollow"><img src="https://camo.githubusercontent.com/cee8daf38d3bfeb2a419a71922f79c6ce5e28a2a/68747470733a2f2f636f6465636f762e696f2f67682f4a756c6961416374756172792f4d6f7274616c6974795461626c65732e6a6c2f6272616e63682f6d61737465722f67726170682f62616467652e737667" alt="codecov" data-canonical-src="https://codecov.io/gh/JuliaActuary/MortalityTables.jl/branch/master/graph/badge.svg" style="max-width:100%;"></a></p>
+<p>A Julia package for working with MortalityTables. Has first-class support for missing values.</p>
+<h2><a id="user-content-examples" class="anchor" aria-hidden="true" href="#examples"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h2>
+<h3><a id="user-content-quickstart" class="anchor" aria-hidden="true" href="#quickstart"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quickstart</h3>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> MortalityTables
+
+tables <span class="pl-k">=</span> MortalityTables<span class="pl-k">.</span><span class="pl-c1">tables</span>() <span class="pl-c"><span class="pl-c">#</span> loads the tables stored in the package folder</span>
+vbt2001 <span class="pl-k">=</span> tables[<span class="pl-s"><span class="pl-pds">"</span>2001 VBT Residual Standard Select and Ultimate - Male Nonsmoker, ANB<span class="pl-pds">"</span></span>]
+
+<span class="pl-c"><span class="pl-c">#</span> indexed by issue age and duration for select rate</span>
+<span class="pl-c1">qx</span>(vbt2001,<span class="pl-c1">35</span>,<span class="pl-c1">1</span>)        <span class="pl-c"><span class="pl-c">#</span> .00036</span>
+
+<span class="pl-c"><span class="pl-c">#</span> indexed by just attained age for ultimate rate</span>
+<span class="pl-c1">qx</span>(vbt2001,<span class="pl-c1">95</span>)          <span class="pl-c"><span class="pl-c">#</span> .24298</span></pre></div>
+<h3><a id="user-content-example-quickly-access-and-compare-tables" class="anchor" aria-hidden="true" href="#example-quickly-access-and-compare-tables"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example: Quickly access and compare tables</h3>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> MortalityTables, Plots
+
+
+tables <span class="pl-k">=</span> MortalityTables<span class="pl-k">.</span><span class="pl-c1">tables</span>()
+cso_2001 <span class="pl-k">=</span> tables[<span class="pl-s"><span class="pl-pds">"</span>2001 CSO Super Preferred Select and Ultimate - Male Nonsmoker, ANB<span class="pl-pds">"</span></span>]
+cso_1980 <span class="pl-k">=</span> tables[<span class="pl-s"><span class="pl-pds">"</span>1980 CSO - Male Nonsmoker, ANB<span class="pl-pds">"</span></span>]
+
+age <span class="pl-k">=</span> <span class="pl-c1">27</span>
+durations <span class="pl-k">=</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">30</span>
+<span class="pl-c1">plot</span>(
+   durations,
+   [<span class="pl-c1">qx</span>(cso_2001,age,durations),<span class="pl-c1">qx</span>(cso_1980,age,durations)],
+   label <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>2001 CSO M SuperPref NS<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>1980 CSO M NS<span class="pl-pds">"</span></span>], 
+   title <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Comparison of 1980 and 2001 CSO <span class="pl-cce">\n</span> for 27-year-old male<span class="pl-pds">"</span></span>,
+   xlabel<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>duration<span class="pl-pds">"</span></span>)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/711879/74115814-789cfd80-4b76-11ea-9d27-c4901844bcb4.png"><img src="https://user-images.githubusercontent.com/711879/74115814-789cfd80-4b76-11ea-9d27-c4901844bcb4.png" alt="Comparison of 2001 and 1980 CSO" style="max-width:100%;"></a></p>
+<h2><a id="user-content-usage" class="anchor" aria-hidden="true" href="#usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+<h3><a id="user-content-indexing" class="anchor" aria-hidden="true" href="#indexing"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Indexing</h3>
+<p>The tables, by default, start at issue age zero and duration one and go to age 121. For values that are not defined in the table within that range, you will get
+a <code>missing</code> value.</p>
+<h4><a id="user-content-index-by-issue-age-and-duration-to-get-select-rates" class="anchor" aria-hidden="true" href="#index-by-issue-age-and-duration-to-get-select-rates"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index by issue age and duration to get select rates</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">qx</span>(vbt2001,<span class="pl-c1">35</span>,<span class="pl-c1">1</span>)        <span class="pl-c"><span class="pl-c">#</span> .00036</span>
+<span class="pl-c1">qx</span>(vbt2001,<span class="pl-c1">35</span>,<span class="pl-c1">61</span>)       <span class="pl-c"><span class="pl-c">#</span> .24298</span>
+
+<span class="pl-c"><span class="pl-c">#</span> can easily get ranges of values:</span>
+<span class="pl-c1">qx</span>(vbt2001,<span class="pl-c1">35</span>,<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">30</span>)     <span class="pl-c"><span class="pl-c">#</span> [0.0036, 0.0048, ...]</span></pre></div>
+<h4><a id="user-content-index-by-just-age-to-get-the-ultimate-rates" class="anchor" aria-hidden="true" href="#index-by-just-age-to-get-the-ultimate-rates"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index by just age to get the ultimate rates</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">qx</span>(vbt2001,<span class="pl-c1">95</span>)          <span class="pl-c"><span class="pl-c">#</span> .24298</span>
+<span class="pl-c1">qx</span>(vbt2001,<span class="pl-c1">50</span><span class="pl-k">:</span><span class="pl-c1">70</span>)       <span class="pl-c"><span class="pl-c">#</span> [0.00319, 0.00345, ...]</span></pre></div>
+<h3><a id="user-content-other-usage" class="anchor" aria-hidden="true" href="#other-usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other Usage</h3>
+<h4><a id="user-content-table-attributes" class="anchor" aria-hidden="true" href="#table-attributes"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table Attributes</h4>
+<div class="highlight highlight-source-julia"><pre>ω(vbt2001)              <span class="pl-c"><span class="pl-c">#</span> 120</span>
+<span class="pl-c1">omega</span>(vbt2001)          <span class="pl-c"><span class="pl-c">#</span> 120</span></pre></div>
+<h4><a id="user-content-table-metadata" class="anchor" aria-hidden="true" href="#table-metadata"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Table MetaData</h4>
+<p>When you have an expression that shows a Mortality table, it displays relevant information:</p>
+<div class="highlight highlight-source-julia"><pre>tables <span class="pl-k">=</span> MortalityTables<span class="pl-k">.</span><span class="pl-c1">tables</span>()
+vbt2001 <span class="pl-k">=</span> tables[<span class="pl-s"><span class="pl-pds">"</span>2001 VBT Residual Standard Select and Ultimate - Male Nonsmoker, ANB<span class="pl-pds">"</span></span>]</pre></div>
+<p>This shows the following in a notebook or REPL:</p>
+<pre><code>MortalityTable:
+   Name:
+       2001 VBT Residual Standard Select and Ultimate - Male Nonsmoker, ANB
+   Provider:
+       Society of Actuaries
+   mort.SOA.org ID:
+       1118
+   mort.SOA.org link:
+       https://mort.soa.org/ViewTable.aspx?&amp;TableIdentity=1118
+   Description:
+       2001 Valuation Basic Table (VBT) Residual Standard Select and Ultimate Table -  Male Nonsmoker. Basis: Age Nearest Birthday. Minimum Select Age: 0. Maximum Select Age: 99. Minimum Ultimate Age: 25. Maximum Ultimate Age: 120
+</code></pre>
+<h3><a id="user-content-exported-functions" class="anchor" aria-hidden="true" href="#exported-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exported functions</h3>
+<div class="highlight highlight-source-julia"><pre><span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">ₜp₍ₓ₎₊ₛ , or the probability that a life aged `x + s` who was select</span>
+<span class="pl-s">at age `x` survives to at least age `x+s+t`</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">p</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,x,s,t)
+
+
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">ₜpₓ , or the probability that a life aged `x` survives to at least age `t`</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">p</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,x,t)
+
+
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">pₓ , or the probability that a life aged `x` survives through age `x+1`</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">p</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,x)
+
+
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">ₜq₍ₓ₎₊ₛ , or the probability that a life aged `x + s` who was select</span>
+<span class="pl-s">at age `x` dies by least age `x+s+t`</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">q</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,x,s,t)
+
+
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">ₜqₓ , or the probability that a life aged `x` dies by age `x+t`</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">q</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,x,t)
+
+
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">qₓ , or the probability that a life aged `x` dies by age `x+1`</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">q</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,x)
+
+
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">`qx` is a convenience function that allows you to get the rate at a given `age`.</span>
+<span class="pl-s">If wanting select/ultimate rates, specify the `duration` and `age` should be the issue age.</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">qx</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,age)
+<span class="pl-c1">qx</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>,age,duration)
+
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">`omega` (also `ω`) returns the last attained age which the table has defined (ie not including)</span>
+<span class="pl-s">`missing`</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-c1">omega</span>(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>)
+ω(table<span class="pl-k">::</span><span class="pl-c1">MortalityTable</span>)</pre></div>
+<h3><a id="user-content-some-batteries-included" class="anchor" aria-hidden="true" href="#some-batteries-included"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Some Batteries Included</h3>
+<p>Comes with some tables built in via <a href="https://mort.soa.org" rel="nofollow">mort.SOA.org</a> and by using <a href="https://mort.soa.org/TermsOfUse.aspx" rel="nofollow">you agree to their terms</a>.</p>
+<p>Not all tables have been tested that they work by default, though I have not encountered issues with any of the the VBT/CSO/other usual tables.</p>
+<p>Included:</p>
+<pre><code>2017 Loaded CSO
+2015 VBT
+2001 VBT
+2001 CSO
+1980 CSO
+1980 CET
+</code></pre>
+<p><a href="BundledTables.md">Click here to see the full list of tables included.</a></p>
+<h3><a id="user-content-adding-more-tables" class="anchor" aria-hidden="true" href="#adding-more-tables"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding more tables</h3>
+<p>To add more tables for your use, download the <code>.xml</code> (aka the (<code>Xtbml</code> format)[<a href="https://mort.soa.org/About.aspx" rel="nofollow">https://mort.soa.org/About.aspx</a>]) version of the table from <a href="https://mort.soa.org" rel="nofollow">mort.SOA.org</a> and place it in the directory the package is installed in. This is usually <code>~user/.julia/packages/MortalityTables/[changing hash value]/src/tables/</code>. <em>Note: updating the package may remove your existing tables. Make a backup before updating your packages</em></p>
+<p>After placing packages in the folder above, restart Julia and the should be discoverable when you run <code>mt.Tables()</code></p>
+<h3><a id="user-content-todos" class="anchor" aria-hidden="true" href="#todos"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Todos</h3>
+<ul>
+<li>Docs</li>
+<li>Automatically parse built-in tables</li>
+<li>Add more built-in tables</li>
+<li>Usage Examples</li>
+<li>More tests</li>
+<li>Performance testing</li>
+<li>Easy assumption overlay (e.g. scalars)</li>
+</ul>
+<h3><a id="user-content-references" class="anchor" aria-hidden="true" href="#references"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>References</h3>
+<ul>
+<li><a href="https://mort.soa.org/" rel="nofollow">SOA Mortality Tables</a></li>
+<li><a href="https://www.cambridge.org/vi/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/actuarial-mathematics-life-contingent-risks-2nd-edition?format=HB" rel="nofollow">Actuarial Mathematics for Life Contingent Risks, 2nd ed</a></li>
+<li><a href="https://www.soa.org/globalassets/assets/Files/Research/2016-10-experience-study-calculations.pdf" rel="nofollow">Experience Study Calculations, SOA</a></li>
+</ul>
+<h3><a id="user-content-similar-projects" class="anchor" aria-hidden="true" href="#similar-projects"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Similar Projects</h3>
+<ul>
+<li><a href="https://github.com/franciscogarate/pyliferisk">Pyliferisk, a Python package</a></li>
+</ul>
+</article></div>

@@ -1,0 +1,258 @@
+<div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content p-5" itemprop="text"><h1><a id="user-content-businessdaysjl" class="anchor" aria-hidden="true" href="#businessdaysjl"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BusinessDays.jl</h1>
+<p><a href="LICENSE"><img src="https://camo.githubusercontent.com/4440d5deb3a53c4f8661ee765378e6071e7878e8/687474703a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d627269676874677265656e2e7376673f7374796c653d666c6174" alt="License" data-canonical-src="http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat" style="max-width:100%;"></a>
+<a href="https://travis-ci.org/JuliaFinance/BusinessDays.jl" rel="nofollow"><img src="https://camo.githubusercontent.com/e5b529acd19aa6d5660ac9090d909e9127869ca3/68747470733a2f2f7472617669732d63692e6f72672f4a756c696146696e616e63652f427573696e657373446179732e6a6c2e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/JuliaFinance/BusinessDays.jl.svg?branch=master" style="max-width:100%;"></a>
+<a href="http://codecov.io/github/JuliaFinance/BusinessDays.jl?branch=master" rel="nofollow"><img src="https://camo.githubusercontent.com/1e26493f83460d0b1c1403fff550987ff2892db2/687474703a2f2f636f6465636f762e696f2f6769746875622f4a756c696146696e616e63652f427573696e657373446179732e6a6c2f636f7665726167652e7376673f6272616e63683d6d6173746572" alt="codecov.io" data-canonical-src="http://codecov.io/github/JuliaFinance/BusinessDays.jl/coverage.svg?branch=master" style="max-width:100%;"></a></p>
+<p>A highly optimized <em>Business Days</em> calculator written in Julia language.
+Also known as <em>Working Days</em> calculator.</p>
+<h2><a id="user-content-installation" class="anchor" aria-hidden="true" href="#installation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h2>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> Pkg<span class="pl-k">.</span><span class="pl-c1">add</span>(<span class="pl-s"><span class="pl-pds">"</span>BusinessDays<span class="pl-pds">"</span></span>)</pre></div>
+<h2><a id="user-content-motivation" class="anchor" aria-hidden="true" href="#motivation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Motivation</h2>
+<p>This code was developed with a mindset of a Financial Institution that has a big <em>Fixed Income</em> portfolio. Many financial contracts, specially <em>Fixed Income instruments</em>, depend on a particular calendar of holidays to determine how many days exist between the valuation date and the maturity of the contract. A <em>Business Days</em> calculator is a small piece of software used to perform this important step of the valuation process.
+While there are many implementations of <em>Business Days</em> calculators out there, the usual implementation is based on this kind of algorithm:</p>
+<div class="highlight highlight-source-r"><pre><span class="pl-v">dt0</span> <span class="pl-k">=</span> <span class="pl-smi">initial_date</span>
+<span class="pl-v">dt1</span> <span class="pl-k">=</span> <span class="pl-smi">final_date</span>
+<span class="pl-v">holidays</span> <span class="pl-k">=</span> <span class="pl-smi">vector_of_holidays</span>
+<span class="pl-v">bdays</span> <span class="pl-k">=</span> <span class="pl-c1">0</span>
+<span class="pl-k">while</span> <span class="pl-smi">d0</span> <span class="pl-k">&lt;</span><span class="pl-k">=</span> <span class="pl-smi">d1</span>
+    <span class="pl-k">if</span> <span class="pl-smi">d0</span> <span class="pl-smi">not</span> <span class="pl-k">in</span> <span class="pl-smi">holidays</span>
+        <span class="pl-v">bdays</span> <span class="pl-k">=</span> <span class="pl-smi">bdays</span> <span class="pl-k">+</span> <span class="pl-c1">1</span>
+    <span class="pl-smi">end</span>
+    <span class="pl-v">d0</span> <span class="pl-k">=</span> <span class="pl-smi">d0</span> <span class="pl-k">+</span> <span class="pl-c1">1</span>
+<span class="pl-smi">end</span> <span class="pl-k">while</span></pre></div>
+<p>This works fine for general use. But the performance becomes an issue if one must repeat this calculation many times. Say you have 50 000 contracts, each contract with 20 cash flows. If you need to apply this algorithm to each cash flow, you will need to perform it 1 000 000 times.</p>
+<p>For instance, let's try out this code using <em>R</em> and <em><a href="https://github.com/lballabio/QuantLib">QuantLib</a></em> (<a href="https://github.com/eddelbuettel/rquantlib">RQuantLib</a>):</p>
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">RQuantLib</span>)
+library(<span class="pl-smi">microbenchmark</span>)
+
+<span class="pl-smi">from</span> <span class="pl-k">&lt;-</span> as.Date(<span class="pl-s"><span class="pl-pds">"</span>2015-06-29<span class="pl-pds">"</span></span>)
+<span class="pl-smi">to</span> <span class="pl-k">&lt;-</span> as.Date(<span class="pl-s"><span class="pl-pds">"</span>2100-12-20<span class="pl-pds">"</span></span>)
+microbenchmark(businessDaysBetween(<span class="pl-s"><span class="pl-pds">"</span>Brazil<span class="pl-pds">"</span></span>, <span class="pl-smi">from</span>, <span class="pl-smi">to</span>))
+
+<span class="pl-smi">from_vect</span> <span class="pl-k">&lt;-</span> rep(<span class="pl-smi">from</span>, <span class="pl-c1">1000000</span>)
+<span class="pl-smi">to_vect</span> <span class="pl-k">&lt;-</span> rep(<span class="pl-smi">to</span>, <span class="pl-c1">1000000</span>)
+microbenchmark(businessDaysBetween(<span class="pl-s"><span class="pl-pds">"</span>Brazil<span class="pl-pds">"</span></span>, <span class="pl-smi">from_vect</span>, <span class="pl-smi">to_vect</span>), <span class="pl-v">times</span><span class="pl-k">=</span><span class="pl-c1">1</span>)</pre></div>
+<p>Running this code, we get the following: <em>(only the fastest execution is shown)</em></p>
+<pre><code>Unit: milliseconds
+                                    expr     min
+ businessDaysBetween("Brazil", from, to) 1.63803
+
+Unit: seconds
+                                              expr      min
+ businessDaysBetween("Brazil", from_vect, to_vect) 1837.476
+
+</code></pre>
+<p>While one computation takes up to 2 milliseconds, we're in trouble if we have to repeat it for the whole portfolio: it takes about <strong>half an hour</strong> to complete. This is not due to R's performance, because <em><a href="https://github.com/eddelbuettel/rquantlib">RQuantLib</a></em> is a simple wrapper to <a href="https://github.com/lballabio/QuantLib">QuantLib</a> <em>C++</em> library.</p>
+<p><strong>BusinessDays.jl</strong> uses a <em>tailor-made</em> cache to store Business Days results, reducing the time spent to the order of a few <em>microseconds</em> for a single computation. Also, the time spent to process the whole portfolio is reduced to <strong>under a second</strong>.</p>
+<p>It's also important to point out that the initialization of the memory cache, which is done only once for each Julia runtime session, takes less than <em>half a second</em>, including JIT compilation time. Also, the <em>memory footprint</em> required for each cached calendar should take around 0.7 MB.</p>
+<p><strong>Benchmark Code</strong></p>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> <span class="pl-k">using</span> BusinessDays, Dates
+
+julia<span class="pl-k">&gt;</span> d0 <span class="pl-k">=</span> <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">06</span>, <span class="pl-c1">29</span>) ; d1 <span class="pl-k">=</span> <span class="pl-c1">Date</span>(<span class="pl-c1">2100</span>, <span class="pl-c1">12</span>, <span class="pl-c1">20</span>) ;
+
+julia<span class="pl-k">&gt;</span> cal <span class="pl-k">=</span> BusinessDays<span class="pl-k">.</span><span class="pl-c1">Brazil</span>()
+BusinessDays<span class="pl-k">.</span><span class="pl-c1">BRSettlement</span>()
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">@time</span> BusinessDays<span class="pl-k">.</span><span class="pl-c1">initcache</span>(cal)
+  <span class="pl-c1">0.161972</span> seconds (<span class="pl-c1">598.85</span> k allocations<span class="pl-k">:</span> <span class="pl-c1">30.258</span> MiB, <span class="pl-c1">2.29</span><span class="pl-k">%</span> gc time)
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">bdays</span>(cal, d0, d1) <span class="pl-c"><span class="pl-c">#</span> force JIT compilation</span>
+<span class="pl-c1">21471</span> days
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">@time</span> <span class="pl-c1">bdays</span>(cal, d0, d1)
+  <span class="pl-c1">0.000012</span> seconds (<span class="pl-c1">9</span> allocations<span class="pl-k">:</span> <span class="pl-c1">240</span> bytes)
+<span class="pl-c1">21471</span> days
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">@time</span> <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">1000000</span> <span class="pl-c1">bdays</span>(cal, d0, d1) <span class="pl-k">end</span>
+  <span class="pl-c1">0.221275</span> seconds (<span class="pl-c1">5.00</span> M allocations<span class="pl-k">:</span> <span class="pl-c1">76.294</span> MiB, <span class="pl-c1">2.93</span><span class="pl-k">%</span> gc time)</pre></div>
+<p><strong>There's no magic</strong></p>
+<p>If we disable BusinessDays's cache, however, the performance is slightly worse than QuantLib's implementation. It takes around 38 minutes to process the same benchmark test.</p>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> BusinessDays<span class="pl-k">.</span><span class="pl-c1">cleancache</span>() <span class="pl-c"><span class="pl-c">#</span> cleans existing cache, if any</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">@time</span> <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">1000000</span> <span class="pl-c1">bdays</span>(cal, d0, d1) <span class="pl-k">end</span>
+<span class="pl-c"><span class="pl-c">#</span> 2288.906548 seconds (5.00 M allocations: 76.294 MB, 0.00% gc time)</span></pre></div>
+<p>It's important to point out that <strong>cache is disabled by default</strong>. So, in order to take advantage of high speed computation provided by this package, one must call <code>BusinessDays.initcache</code> function.</p>
+<h2><a id="user-content-usage" class="anchor" aria-hidden="true" href="#usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> <span class="pl-k">using</span> BusinessDays, Dates
+
+julia<span class="pl-k">&gt;</span> BusinessDays<span class="pl-k">.</span><span class="pl-c1">initcache</span>(<span class="pl-c1">:USSettlement</span>) <span class="pl-c"><span class="pl-c">#</span> creates cache for US Federal holidays, allowing fast computations</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isbday</span>(<span class="pl-c1">:USSettlement</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">1</span>)) <span class="pl-c"><span class="pl-c">#</span> Calendars can be referenced using symbols</span>
+<span class="pl-c1">false</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isbday</span>(<span class="pl-s"><span class="pl-pds">"</span>USSettlement<span class="pl-pds">"</span></span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">1</span>)) <span class="pl-c"><span class="pl-c">#</span> ... and also strings</span>
+<span class="pl-c1">false</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isbday</span>(BusinessDays<span class="pl-k">.</span><span class="pl-c1">USSettlement</span>(), <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">1</span>)) <span class="pl-c"><span class="pl-c">#</span> but for the best performance, use a singleton instance</span>
+<span class="pl-c1">false</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">tobday</span>(<span class="pl-c1">:USSettlement</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">1</span>)) <span class="pl-c"><span class="pl-c">#</span> Adjust to next business day</span>
+<span class="pl-c1">2015</span><span class="pl-k">-</span><span class="pl-c1">01</span><span class="pl-k">-</span><span class="pl-c1">02</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">tobday</span>(<span class="pl-c1">:USSettlement</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">1</span>); forward <span class="pl-k">=</span> <span class="pl-c1">false</span>) <span class="pl-c"><span class="pl-c">#</span> Adjust to last business day</span>
+<span class="pl-c1">2014</span><span class="pl-k">-</span><span class="pl-c1">12</span><span class="pl-k">-</span><span class="pl-c1">31</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">advancebdays</span>(<span class="pl-c1">:USSettlement</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>), <span class="pl-c1">1</span>) <span class="pl-c"><span class="pl-c">#</span> advances 1 business day</span>
+<span class="pl-c1">2015</span><span class="pl-k">-</span><span class="pl-c1">01</span><span class="pl-k">-</span><span class="pl-c1">05</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">advancebdays</span>(<span class="pl-c1">:USSettlement</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">2</span>), <span class="pl-k">-</span><span class="pl-c1">1</span>) <span class="pl-c"><span class="pl-c">#</span> goes back 1 business day</span>
+<span class="pl-c1">2014</span><span class="pl-k">-</span><span class="pl-c1">12</span><span class="pl-k">-</span><span class="pl-c1">31</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">bdays</span>(<span class="pl-c1">:USSettlement</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2014</span>, <span class="pl-c1">12</span>, <span class="pl-c1">31</span>), <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">5</span>)) <span class="pl-c"><span class="pl-c">#</span> counts the number of business days between dates</span>
+<span class="pl-c1">2</span> days
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">bdayscount</span>(<span class="pl-c1">:USSettlement</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2014</span>, <span class="pl-c1">12</span>, <span class="pl-c1">31</span>), <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>, <span class="pl-c1">1</span>, <span class="pl-c1">5</span>)) <span class="pl-c"><span class="pl-c">#</span> same as above, but returns integer</span>
+<span class="pl-c1">2</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isbday</span>(<span class="pl-c1">:USSettlement</span>, [<span class="pl-c1">Date</span>(<span class="pl-c1">2014</span>,<span class="pl-c1">12</span>,<span class="pl-c1">31</span>),<span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>),<span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>),<span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">1</span>,<span class="pl-c1">3</span>),<span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">1</span>,<span class="pl-c1">5</span>)])
+<span class="pl-c1">5</span><span class="pl-k">-</span>element Array{Bool,<span class="pl-c1">1</span>}<span class="pl-k">:</span>
+  <span class="pl-c1">true</span>
+ <span class="pl-c1">false</span>
+  <span class="pl-c1">true</span>
+ <span class="pl-c1">false</span>
+  <span class="pl-c1">true</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">bdays</span>(<span class="pl-c1">:USSettlement</span>, [<span class="pl-c1">Date</span>(<span class="pl-c1">2014</span>,<span class="pl-c1">12</span>,<span class="pl-c1">31</span>),<span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>)], [<span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">1</span>,<span class="pl-c1">5</span>),<span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">1</span>,<span class="pl-c1">5</span>)])
+<span class="pl-c1">2</span><span class="pl-k">-</span>element Array{Base<span class="pl-k">.</span>Dates<span class="pl-k">.</span>Day,<span class="pl-c1">1</span>}<span class="pl-k">:</span>
+ <span class="pl-c1">2</span> days
+ <span class="pl-c1">1</span> day
+</pre></div>
+<p>See <em>runtests.jl</em> for more examples.</p>
+<h2><a id="user-content-package-documentation" class="anchor" aria-hidden="true" href="#package-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Package Documentation</h2>
+<p><strong>HolidayCalendar</strong></p>
+<p><em>Abstract</em> type for Holiday Calendars.</p>
+<p><strong>BusinessDays.easter_rata(y::Year) → Int</strong></p>
+<p>Returns Easter date as a <em><a href="https://en.wikipedia.org/wiki/Rata_Die" rel="nofollow">Rata Die</a></em> number.</p>
+<p><strong>BusinessDays.easter_date(y::Year) → Date</strong></p>
+<p>Returns result of <code>easter_rata</code> as a <code>Date</code> instance.</p>
+<p><strong>BusinessDays.findweekday(weekday_target::Int, yy::Int, mm::Int, occurrence::Int, ascending::Bool) → Date</strong></p>
+<p>Given a year <code>yy</code> and month <code>mm</code>, finds a date where a choosen weekday occurs.</p>
+<p><code>weekday_target</code> values are declared in module <code>Base.Dates</code>:
+<code>Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday = 1,2,3,4,5,6,7</code>.</p>
+<p>If <code>ascending</code> is true, searches from the beggining of the month. If false, searches from the end of the month.</p>
+<p>If <code>occurrence</code> is <code>2</code> and <code>weekday_target</code> is <code>Monday</code>, searches the 2nd Monday of the given month, and so on.</p>
+<p><strong>isholiday(calendar, dt)</strong></p>
+<p>Checks if <code>dt</code> is a holiday based on a given <code>calendar</code> of holidays.</p>
+<p><code>calendar</code> can be an instance of <code>HolidayCalendar</code>,  a <code>Symbol</code> or an <code>AbstractString</code>.</p>
+<p>Returns boolean values.</p>
+<p><strong>isweekend(dt)</strong></p>
+<p>Returns <code>true</code> for Saturdays or Sundays.
+Returns <code>false</code> otherwise.</p>
+<p><strong>isbday(calendar, dt)</strong></p>
+<p>Returns <code>true</code> for weekends or holidays.
+Returns <code>false</code> otherwise.</p>
+<p><strong>tobday(calendar, dt; [forward=true])</strong></p>
+<p>Adjusts <code>dt</code> to next Business Day if it's not a Business Day.
+If <code>isbday(dt)</code>, returns <code>dt</code>.</p>
+<p><strong>advancebdays(calendar, dt, bdays_count)</strong></p>
+<p>Increments given date <code>dt</code> by <code>bdays_count</code>.
+Decrements it if <code>bdays_count</code> is negative.
+<code>bdays_count</code> can be a <code>Int</code>, <code>Vector{Int}</code> or a <code>UnitRange</code>.</p>
+<p>Computation starts by next Business Day if <code>dt</code> is not a Business Day.</p>
+<p><strong>bdays(calendar, dt0, dt1)</strong></p>
+<p>Counts the number of Business Days between <code>dt0</code> and <code>dt1</code>.
+Returns instances of <code>Dates.Day</code>.</p>
+<p>Computation is always based on next Business Day if given dates are not Business Days.</p>
+<p><strong>bdayscount(calendar, dt0, dt1)</strong></p>
+<p>Same as <code>bdays</code>, but returns <code>Int</code>.</p>
+<p><strong>firstbdayofmonth(calendar, dt)</strong> , <strong>firstbdayofmonth(calendar, yy, mm)</strong></p>
+<p>Returns the first business day for a given month.</p>
+<p><strong>lastbdayofmonth(calendar, dt)</strong> , <strong>lastbdayofmonth(calendar, yy, mm)</strong></p>
+<p>Returns the last business day for a given month.</p>
+<p><strong>listholidays(calendar, dt0::Date, dt1::Date) → Vector{Date}</strong></p>
+<p>Returns the list of holidays between <code>dt0</code> and <code>dt1</code>.</p>
+<p><strong>listbdays(calendar, dt0::Date, dt1::Date) → Vector{Date}</strong></p>
+<p>Returns the list of business days between <code>dt0</code> and <code>dt1</code>.</p>
+<p><strong>BusinessDays.initcache(calendar, [d0], [d1])</strong></p>
+<p>Creates cache for a given Holiday Calendar. After calling this function, any call to <code>isbday</code>
+function, or any function that uses <code>isbday</code>, will be optimized to use this cache.</p>
+<p>You can pass <code>calendar</code> as an instance of <code>HolidayCalendar</code>, <code>Symbol</code> or <code>AbstractString</code>.
+You can also pass <code>calendar</code> as an <code>AbstractArray</code> of those types.</p>
+<p><strong>BusinessDays.cleancache([calendar])</strong></p>
+<p>Cleans cache for a given instance or list of <code>HolidayCalendar</code>, <code>Symbol</code> or <code>AbstractString</code>.</p>
+<h2><a id="user-content-available-business-days-calendars" class="anchor" aria-hidden="true" href="#available-business-days-calendars"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Available Business Days Calendars</h2>
+<ul>
+<li><strong>AustraliaASX</strong> : Public holidays for the Australian Stock Exchange (ASX).</li>
+<li><strong>Australia(state)</strong> : Public holidays for the Australian states and territories. Available for each state: <code>Australia(:ACT)</code>, <code>Australia(:NSW)</code>, <code>Australia(:NT)</code>, <code>Australia(:QLD)</code>, <code>Australia(:SA)</code>, <code>Australia(:TAS)</code>, <code>Australia(:WA)</code>, <code>Australia(:VIC)</code>.</li>
+<li><strong>BRSettlement</strong> or <strong>Brazil</strong> : banking holidays for Brazil (federal holidays plus Carnival).</li>
+<li><strong>BrazilBMF</strong> or <strong>BrazilExchange</strong> : holidays for BM&amp;FBOVESPA Stock Exchange.</li>
+<li><strong>CanadaSettlement</strong> or <strong>Canada</strong>: holidays for Canada.</li>
+<li><strong>CanadaTSX</strong>: holidays for Toronto Stock Exchange</li>
+<li><strong>CompositeHolidayCalendar</strong> : supports combination of Holiday Calendars.</li>
+<li><strong>NullHolidayCalendar</strong> : <code>isholiday</code> returns <code>false</code> and <code>isbday</code> returns <code>true</code> for any date. <code>bdays</code> returns the actual days between dates.</li>
+<li><strong>TARGET</strong> or <strong>TARGET2</strong> or <strong>EuroZone</strong> : <a href="https://en.wikipedia.org/wiki/TARGET2" rel="nofollow">TARGET / TARGET2 Euro Zone</a> holiday calendar.</li>
+<li><strong>USSettlement</strong> or <strong>UnitedStates</strong>: United States federal holidays.</li>
+<li><strong>USNYSE</strong> : United States NYSE holidays.</li>
+<li><strong>USGovernmentBond</strong> : United States Government Bond calendar.</li>
+<li><strong>UKSettlement</strong> or <strong>UnitedKingdom</strong>: banking holidays for England and Wales.</li>
+<li><strong>WeekendsOnly</strong> : for this calendar, <code>isholiday</code> returns <code>false</code>, but <code>isbday</code> returns <code>false</code> for Saturdays and Sundays.</li>
+</ul>
+<h2><a id="user-content-adding-new-holiday-calendars" class="anchor" aria-hidden="true" href="#adding-new-holiday-calendars"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding new Holiday Calendars</h2>
+<p>You can add your custom Holiday Calendar by doing the following:</p>
+<ol>
+<li>Define a subtype of <code>HolidayCalendar</code>.</li>
+<li>Implement a new method for <code>isholiday</code> for your calendar.</li>
+</ol>
+<p><strong>Example Code</strong></p>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> <span class="pl-k">using</span> BusinessDays, Dates
+
+julia<span class="pl-k">&gt;</span> <span class="pl-k">struct</span> CustomCalendar <span class="pl-k">&lt;:</span> <span class="pl-c1">HolidayCalendar</span> <span class="pl-k">end</span>
+
+julia<span class="pl-k">&gt;</span> BusinessDays<span class="pl-k">.</span><span class="pl-en">isholiday</span>(<span class="pl-k">::</span><span class="pl-c1">CustomCalendar</span>, dt<span class="pl-k">::</span><span class="pl-c1">Date</span>) <span class="pl-k">=</span> dt <span class="pl-k">==</span> <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">8</span>,<span class="pl-c1">27</span>)
+
+julia<span class="pl-k">&gt;</span> cc <span class="pl-k">=</span> <span class="pl-c1">CustomCalendar</span>()
+<span class="pl-c1">CustomCalendar</span>()
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isholiday</span>(cc, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">8</span>,<span class="pl-c1">26</span>))
+<span class="pl-c1">false</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isholiday</span>(cc, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">8</span>,<span class="pl-c1">27</span>))
+<span class="pl-c1">true</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isholiday</span>(<span class="pl-c1">:CustomCalendar</span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">8</span>,<span class="pl-c1">27</span>))
+<span class="pl-c1">true</span>
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">isholiday</span>(<span class="pl-s"><span class="pl-pds">"</span>CustomCalendar<span class="pl-pds">"</span></span>, <span class="pl-c1">Date</span>(<span class="pl-c1">2015</span>,<span class="pl-c1">8</span>,<span class="pl-c1">27</span>))
+<span class="pl-c1">true</span></pre></div>
+<h2><a id="user-content-generic-holiday-calendar" class="anchor" aria-hidden="true" href="#generic-holiday-calendar"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Generic Holiday Calendar</h2>
+<p>You can use a fixed set of holidays to define a new Holiday Calendar using <code>GenericHolidayCalendar</code> type.</p>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> <span class="pl-k">using</span> BusinessDays, Dates
+
+julia<span class="pl-k">&gt;</span> holidays <span class="pl-k">=</span> <span class="pl-c1">Set</span>([<span class="pl-c1">Date</span>(<span class="pl-c1">2018</span>,<span class="pl-c1">1</span>,<span class="pl-c1">16</span>), <span class="pl-c1">Date</span>(<span class="pl-c1">2018</span>,<span class="pl-c1">1</span>,<span class="pl-c1">18</span>)])
+
+julia<span class="pl-k">&gt;</span> dtmin <span class="pl-k">=</span> <span class="pl-c1">Date</span>(<span class="pl-c1">2018</span>,<span class="pl-c1">1</span>,<span class="pl-c1">15</span>); dtmax <span class="pl-k">=</span> <span class="pl-c1">Date</span>(<span class="pl-c1">2018</span>,<span class="pl-c1">1</span>,<span class="pl-c1">19</span>)
+
+julia<span class="pl-k">&gt;</span> gen_calendar <span class="pl-k">=</span> <span class="pl-c1">GenericHolidayCalendar</span>(holidays, dtmin, dtmax)
+
+julia<span class="pl-k">&gt;</span> <span class="pl-c1">bdayscount</span>(gen_calendar, <span class="pl-c1">Date</span>(<span class="pl-c1">2018</span>,<span class="pl-c1">1</span>,<span class="pl-c1">15</span>), <span class="pl-c1">Date</span>(<span class="pl-c1">2018</span>,<span class="pl-c1">1</span>,<span class="pl-c1">17</span>))
+<span class="pl-c1">1</span></pre></div>
+<p>The constructor is given by: <code>GenericHolidayCalendar(holidays, [dtmin], [dtmax], [_initcache_])</code>, where</p>
+<ul>
+<li>
+<p><code>holidays</code>: a set of holiday dates</p>
+</li>
+<li>
+<p><code>dtmin</code>: minimum date allowed to check for holidays in holidays set. Defaults to <code>min(holidays...)</code>.</p>
+</li>
+<li>
+<p><code>dtmax</code>: maximum date allowed to check for holidays in holidays set. Defaults to <code>max(holidays...)</code>.</p>
+</li>
+<li>
+<p><code>_initcache_</code>: initializes the cache for this calendar. Defaults to <code>true</code>.</p>
+</li>
+</ul>
+<h2><a id="user-content-alternative-libraries" class="anchor" aria-hidden="true" href="#alternative-libraries"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Alternative Libraries</h2>
+<ul>
+<li>
+<p>Ito.jl: <a href="http://aviks.github.io/Ito.jl/time.html" rel="nofollow">http://aviks.github.io/Ito.jl/time.html</a></p>
+</li>
+<li>
+<p>FinancialMarkets.jl: <a href="https://github.com/imanuelcostigan/FinancialMarkets.jl">https://github.com/imanuelcostigan/FinancialMarkets.jl</a></p>
+</li>
+<li>
+<p>QuantLib.jl : <a href="https://github.com/pazzo83/QuantLib.jl">https://github.com/pazzo83/QuantLib.jl</a></p>
+</li>
+<li>
+<p>QuantLib C++ Library: <a href="https://github.com/lballabio/QuantLib">https://github.com/lballabio/QuantLib</a></p>
+</li>
+</ul>
+</article></div>

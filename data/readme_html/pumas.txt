@@ -1,0 +1,182 @@
+<div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content p-5" itemprop="text"><h1><a id="user-content-pumasjl" class="anchor" aria-hidden="true" href="#pumasjl"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pumas.jl</h1>
+<p><a href="https://gitlab.com/PumasAI/Pumas-jl/commits/master" rel="nofollow"><img src="https://camo.githubusercontent.com/113d2aaf190d1762a703d1128c2825c2e032fac0/68747470733a2f2f6769746c61622e636f6d2f50756d617341492f50756d61732d6a6c2f6261646765732f6d61737465722f706970656c696e652e737667" alt="pipeline status" data-canonical-src="https://gitlab.com/PumasAI/Pumas-jl/badges/master/pipeline.svg" style="max-width:100%;"></a>
+<a href="https://codecov.io/gh/PumasAI/Pumas.jl" rel="nofollow"><img src="https://camo.githubusercontent.com/245f429acb457e58a63da608c00f4e6c0c86f5f2/68747470733a2f2f636f6465636f762e696f2f67682f50756d617341492f50756d61732e6a6c2f6272616e63682f6d61737465722f67726170682f62616467652e7376673f746f6b656e3d4f33463359566f6e5838" alt="codecov" data-canonical-src="https://codecov.io/gh/PumasAI/Pumas.jl/branch/master/graph/badge.svg?token=O3F3YVonX8" style="max-width:100%;"></a></p>
+<p>Pumas: A Pharmaceutical Modeling and Simulation toolkit</p>
+<h2><a id="user-content-resources" class="anchor" aria-hidden="true" href="#resources"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
+<ul>
+<li><a href="https://pumas.ai/download" rel="nofollow">Downloads &amp; Install Instructions</a></li>
+<li><a href="https://docs.pumas.ai/dev/" rel="nofollow">Documentation</a></li>
+<li><a href="https://tutorials.pumas.ai/" rel="nofollow">Tutorials</a></li>
+<li><a href="https://pumas.ai/blog" rel="nofollow">Blog</a></li>
+<li><a href="https://discourse.pumas.ai/" rel="nofollow">Discourse Forum</a></li>
+</ul>
+<h2><a id="user-content-demo-a-simple-pk-model" class="anchor" aria-hidden="true" href="#demo-a-simple-pk-model"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo: A Simple PK model</h2>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> Pumas, Plots</pre></div>
+<p>For reproducibility, we will set a random seed:</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> Random
+Random<span class="pl-k">.</span><span class="pl-c1">seed!</span>(<span class="pl-c1">1</span>)</pre></div>
+<p>A simple one compartment oral absorption model using an analytical solution</p>
+<div class="highlight highlight-source-julia"><pre>model <span class="pl-k">=</span> <span class="pl-c1">@model</span> <span class="pl-k">begin</span>
+  <span class="pl-c1">@param</span>   <span class="pl-k">begin</span>
+    tvcl <span class="pl-k">∈</span> <span class="pl-c1">RealDomain</span>(lower<span class="pl-k">=</span><span class="pl-c1">0</span>)
+    tvv <span class="pl-k">∈</span> <span class="pl-c1">RealDomain</span>(lower<span class="pl-k">=</span><span class="pl-c1">0</span>)
+    pmoncl <span class="pl-k">∈</span> <span class="pl-c1">RealDomain</span>(lower <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">0.99</span>)
+    Ω <span class="pl-k">∈</span> <span class="pl-c1">PDiagDomain</span>(<span class="pl-c1">2</span>)
+    σ_prop <span class="pl-k">∈</span> <span class="pl-c1">RealDomain</span>(lower<span class="pl-k">=</span><span class="pl-c1">0</span>)
+  <span class="pl-k">end</span>
+
+  <span class="pl-c1">@random</span> <span class="pl-k">begin</span>
+    η <span class="pl-k">~</span> <span class="pl-c1">MvNormal</span>(Ω)
+  <span class="pl-k">end</span>
+
+  <span class="pl-c1">@covariates</span> wt isPM
+
+  <span class="pl-c1">@pre</span> <span class="pl-k">begin</span>
+    CL <span class="pl-k">=</span> tvcl <span class="pl-k">*</span> (<span class="pl-c1">1</span> <span class="pl-k">+</span> pmoncl<span class="pl-k">*</span>isPM) <span class="pl-k">*</span> (wt<span class="pl-k">/</span><span class="pl-c1">70</span>)<span class="pl-k">^</span><span class="pl-c1">0.75</span> <span class="pl-k">*</span> <span class="pl-c1">exp</span>(η[<span class="pl-c1">1</span>])
+    V  <span class="pl-k">=</span> tvv <span class="pl-k">*</span> (wt<span class="pl-k">/</span><span class="pl-c1">70</span>) <span class="pl-k">*</span> <span class="pl-c1">exp</span>(η[<span class="pl-c1">2</span>])
+  <span class="pl-k">end</span>
+
+  <span class="pl-c1">@dynamics</span> Central1
+    <span class="pl-c"><span class="pl-c">#</span>@dynamics begin</span>
+    <span class="pl-c"><span class="pl-c">#</span>    Central' =  - (CL/V)*Central</span>
+    <span class="pl-c"><span class="pl-c">#</span>end</span>
+
+  <span class="pl-c1">@derived</span> <span class="pl-k">begin</span>
+      cp <span class="pl-k">=</span> <span class="pl-c1">@.</span> <span class="pl-c1">1000</span><span class="pl-k">*</span>(Central <span class="pl-k">/</span> V)
+      dv <span class="pl-k">~</span> <span class="pl-c1">@.</span> <span class="pl-c1">Normal</span>(cp, <span class="pl-c1">sqrt</span>(cp<span class="pl-k">^</span><span class="pl-c1">2</span><span class="pl-k">*</span>σ_prop))
+    <span class="pl-k">end</span>
+<span class="pl-k">end</span></pre></div>
+<p>Develop a simple dosing regimen for a subject</p>
+<div class="highlight highlight-source-julia"><pre>ev <span class="pl-k">=</span> <span class="pl-c1">DosageRegimen</span>(<span class="pl-c1">100</span>, time<span class="pl-k">=</span><span class="pl-c1">0</span>, addl<span class="pl-k">=</span><span class="pl-c1">4</span>, ii<span class="pl-k">=</span><span class="pl-c1">24</span>)
+s1 <span class="pl-k">=</span> <span class="pl-c1">Subject</span>(id<span class="pl-k">=</span><span class="pl-c1">1</span>,  evs<span class="pl-k">=</span>ev, cvs<span class="pl-k">=</span>(isPM<span class="pl-k">=</span><span class="pl-c1">1</span>, wt<span class="pl-k">=</span><span class="pl-c1">70</span>))</pre></div>
+<p>Simulate a plasma concentration time profile</p>
+<div class="highlight highlight-source-julia"><pre>param <span class="pl-k">=</span> (
+  tvcl <span class="pl-k">=</span> <span class="pl-c1">4.0</span>,
+  tvv  <span class="pl-k">=</span> <span class="pl-c1">70</span>,
+  pmoncl <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">0.7</span>,
+  Ω <span class="pl-k">=</span> <span class="pl-c1">Diagonal</span>([<span class="pl-c1">0.09</span>,<span class="pl-c1">0.09</span>]),
+  σ_prop <span class="pl-k">=</span> <span class="pl-c1">0.04</span>
+  )
+obs <span class="pl-k">=</span> <span class="pl-c1">simobs</span>(model, s1, param, obstimes<span class="pl-k">=</span><span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">120</span>)
+<span class="pl-c1">plot</span>(obs)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/1814174/62414914-e37de280-b5ef-11e9-959a-419805577ba2.png"><img src="https://user-images.githubusercontent.com/1814174/62414914-e37de280-b5ef-11e9-959a-419805577ba2.png" alt="single_sub" style="max-width:100%;"></a></p>
+<p>Generate a population of subjects</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-en">choose_covariates</span>() <span class="pl-k">=</span> (isPM <span class="pl-k">=</span> <span class="pl-c1">rand</span>([<span class="pl-c1">1</span>, <span class="pl-c1">0</span>]),
+              wt <span class="pl-k">=</span> <span class="pl-c1">rand</span>(<span class="pl-c1">55</span><span class="pl-k">:</span><span class="pl-c1">80</span>))
+pop_with_covariates <span class="pl-k">=</span> <span class="pl-c1">Population</span>(<span class="pl-c1">map</span>(i <span class="pl-k">-&gt;</span> <span class="pl-c1">Subject</span>(id<span class="pl-k">=</span>i, evs<span class="pl-k">=</span>ev, cvs<span class="pl-k">=</span><span class="pl-c1">choose_covariates</span>()),<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">10</span>))</pre></div>
+<p>Simulate into the population</p>
+<div class="highlight highlight-source-julia"><pre>obs <span class="pl-k">=</span> <span class="pl-c1">simobs</span>(model, pop_with_covariates, param, obstimes<span class="pl-k">=</span><span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">120</span>)</pre></div>
+<p>and visualize the output</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">plot</span>(obs)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/1814174/62414924-03ada180-b5f0-11e9-8613-3b696a335f5d.png"><img src="https://user-images.githubusercontent.com/1814174/62414924-03ada180-b5f0-11e9-8613-3b696a335f5d.png" alt="pop_sim" style="max-width:100%;"></a></p>
+<p>Let's roundtrip this simulation to test our estimation routines</p>
+<div class="highlight highlight-source-julia"><pre>simdf <span class="pl-k">=</span> <span class="pl-c1">DataFrame</span>(obs)
+simdf<span class="pl-k">.</span>cmt <span class="pl-k">.=</span> <span class="pl-c1">1</span>
+<span class="pl-c1">first</span>(simdf, <span class="pl-c1">6</span>)</pre></div>
+<p>Read the data in to Pumas</p>
+<div class="highlight highlight-source-julia"><pre>data <span class="pl-k">=</span> <span class="pl-c1">read_pumas</span>(simdf, time<span class="pl-k">=</span><span class="pl-c1">:time</span>,cvs<span class="pl-k">=</span>[<span class="pl-c1">:isPM</span>, <span class="pl-c1">:wt</span>])</pre></div>
+<p>Evaluating the results of a model fit goes through an <code>fit</code> --&gt; <code>infer</code> --&gt; <code>inspect</code> --&gt; <code>validate</code> cycle</p>
+<h3><a id="user-content-fit" class="anchor" aria-hidden="true" href="#fit"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>fit</code></h3>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> res <span class="pl-k">=</span> <span class="pl-c1">fit</span>(model,data,param,Pumas<span class="pl-k">.</span><span class="pl-c1">FOCEI</span>())
+FittedPumasModel
+
+Successful minimization<span class="pl-k">:</span>                <span class="pl-c1">true</span>
+
+Likelihood approximation<span class="pl-k">:</span>        Pumas<span class="pl-k">.</span>FOCEI
+Objective <span class="pl-k">function</span> value<span class="pl-k">:</span>            <span class="pl-c1">8363.13</span>
+Total number of observation records<span class="pl-k">:</span>    <span class="pl-c1">1210</span>
+Number of active observation records<span class="pl-k">:</span>   <span class="pl-c1">1210</span>
+Number of subjects<span class="pl-k">:</span>                       <span class="pl-c1">10</span>
+
+<span class="pl-k">-----------------</span>
+       Estimate
+<span class="pl-k">-----------------</span>
+tvcl    <span class="pl-c1">4.7374</span>
+tvv    <span class="pl-c1">68.749</span>
+pmoncl <span class="pl-k">-</span><span class="pl-c1">0.76408</span>
+Ω₁,₁    <span class="pl-c1">0.046677</span>
+Ω₂,₂    <span class="pl-c1">0.024126</span>
+σ_prop  <span class="pl-c1">0.041206</span>
+<span class="pl-k">-----------------</span></pre></div>
+<h3><a id="user-content-infer" class="anchor" aria-hidden="true" href="#infer"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>infer</code></h3>
+<p><code>infer</code> provides the model inference</p>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> <span class="pl-c1">infer</span>(res)
+Calculating<span class="pl-k">:</span> variance<span class="pl-k">-</span>covariance matrix. Done.
+FittedPumasModelInference
+
+Successful minimization<span class="pl-k">:</span>                <span class="pl-c1">true</span>
+
+Likelihood approximation<span class="pl-k">:</span>        Pumas<span class="pl-k">.</span>FOCEI
+Objective <span class="pl-k">function</span> value<span class="pl-k">:</span>            <span class="pl-c1">8363.13</span>
+Total number of observation records<span class="pl-k">:</span>    <span class="pl-c1">1210</span>
+Number of active observation records<span class="pl-k">:</span>   <span class="pl-c1">1210</span>
+Number of subjects<span class="pl-k">:</span>                       <span class="pl-c1">10</span>
+
+<span class="pl-k">---------------------------------------------------</span>
+       Estimate       RSE           <span class="pl-c1">95.0</span><span class="pl-k">%</span> C<span class="pl-k">.</span>I.
+<span class="pl-k">---------------------------------------------------</span>
+tvcl    <span class="pl-c1">4.7374</span>     <span class="pl-c1">10.057</span>  [ <span class="pl-c1">3.8036</span>   ;  <span class="pl-c1">5.6713</span>  ]
+tvv    <span class="pl-c1">68.749</span>       <span class="pl-c1">5.013</span>  [<span class="pl-c1">61.994</span>    ; <span class="pl-c1">75.503</span>   ]
+pmoncl <span class="pl-k">-</span><span class="pl-c1">0.76408</span>    <span class="pl-k">-</span><span class="pl-c1">3.9629</span> [<span class="pl-k">-</span><span class="pl-c1">0.82342</span>  ; <span class="pl-k">-</span><span class="pl-c1">0.70473</span> ]
+Ω₁,₁    <span class="pl-c1">0.046677</span>   <span class="pl-c1">34.518</span>  [ <span class="pl-c1">0.015098</span> ;  <span class="pl-c1">0.078256</span>]
+Ω₂,₂    <span class="pl-c1">0.024126</span>   <span class="pl-c1">31.967</span>  [ <span class="pl-c1">0.0090104</span>;  <span class="pl-c1">0.039243</span>]
+σ_prop  <span class="pl-c1">0.041206</span>    <span class="pl-c1">3.0853</span> [ <span class="pl-c1">0.038714</span> ;  <span class="pl-c1">0.043698</span>]
+<span class="pl-k">---------------------------------------------------</span></pre></div>
+<h3><a id="user-content-inspect" class="anchor" aria-hidden="true" href="#inspect"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>inspect</code></h3>
+<p><code>inspect</code> gives you the model predictions, residuals and Empirical Bayes estimates</p>
+<div class="highlight highlight-source-julia"><pre>resout <span class="pl-k">=</span> <span class="pl-c1">DataFrame</span>(<span class="pl-c1">inspect</span>(res))</pre></div>
+<div class="highlight highlight-source-julia"><pre>julia<span class="pl-k">&gt;</span> <span class="pl-c1">first</span>(resout, <span class="pl-c1">6</span>)
+<span class="pl-c1">6</span><span class="pl-k">×</span><span class="pl-c1">13</span> DataFrame
+│ Row │ id     │ time    │ isPM  │ wt    │ pred    │ ipred   │ pred_approx │ wres     │ iwres     │ wres_approx │ ebe_1     │ ebe_2     │ ebes_approx │
+│     │ String │ Float64 │ Int64 │ Int64 │ Float64 │ Float64 │ Pumas<span class="pl-k">.</span>FOCEI │ Float64  │ Float64   │ Pumas<span class="pl-k">.</span>FOCEI │ Float64   │ Float64   │ Pumas<span class="pl-k">.</span>FOCEI │
+├─────┼────────┼─────────┼───────┼───────┼─────────┼─────────┼─────────────┼──────────┼───────────┼─────────────┼───────────┼───────────┼─────────────┤
+│ <span class="pl-c1">1</span>   │ <span class="pl-c1">1</span>      │ <span class="pl-c1">0.0</span>     │ <span class="pl-c1">1</span>     │ <span class="pl-c1">74</span>    │ <span class="pl-c1">1344.63</span> │ <span class="pl-c1">1679.77</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-c1">0.273454</span> │ <span class="pl-k">-</span><span class="pl-c1">0.638544</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-k">-</span><span class="pl-c1">0.189025</span> │ <span class="pl-k">-</span><span class="pl-c1">0.199515</span> │ <span class="pl-c1">FOCEI</span>()     │
+│ <span class="pl-c1">2</span>   │ <span class="pl-c1">1</span>      │ <span class="pl-c1">0.0</span>     │ <span class="pl-c1">1</span>     │ <span class="pl-c1">74</span>    │ <span class="pl-c1">1344.63</span> │ <span class="pl-c1">1679.77</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-c1">0.273454</span> │ <span class="pl-k">-</span><span class="pl-c1">0.638544</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-k">-</span><span class="pl-c1">0.189025</span> │ <span class="pl-k">-</span><span class="pl-c1">0.199515</span> │ <span class="pl-c1">FOCEI</span>()     │
+│ <span class="pl-c1">3</span>   │ <span class="pl-c1">1</span>      │ <span class="pl-c1">0.0</span>     │ <span class="pl-c1">1</span>     │ <span class="pl-c1">74</span>    │ <span class="pl-c1">1344.63</span> │ <span class="pl-c1">1679.77</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-c1">0.273454</span> │ <span class="pl-k">-</span><span class="pl-c1">0.638544</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-k">-</span><span class="pl-c1">0.189025</span> │ <span class="pl-k">-</span><span class="pl-c1">0.199515</span> │ <span class="pl-c1">FOCEI</span>()     │
+│ <span class="pl-c1">4</span>   │ <span class="pl-c1">1</span>      │ <span class="pl-c1">0.0</span>     │ <span class="pl-c1">1</span>     │ <span class="pl-c1">74</span>    │ <span class="pl-c1">1344.63</span> │ <span class="pl-c1">1679.77</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-c1">0.273454</span> │ <span class="pl-k">-</span><span class="pl-c1">0.638544</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-k">-</span><span class="pl-c1">0.189025</span> │ <span class="pl-k">-</span><span class="pl-c1">0.199515</span> │ <span class="pl-c1">FOCEI</span>()     │
+│ <span class="pl-c1">5</span>   │ <span class="pl-c1">1</span>      │ <span class="pl-c1">0.0</span>     │ <span class="pl-c1">1</span>     │ <span class="pl-c1">74</span>    │ <span class="pl-c1">1344.63</span> │ <span class="pl-c1">1679.77</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-c1">0.273454</span> │ <span class="pl-k">-</span><span class="pl-c1">0.638544</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-k">-</span><span class="pl-c1">0.189025</span> │ <span class="pl-k">-</span><span class="pl-c1">0.199515</span> │ <span class="pl-c1">FOCEI</span>()     │
+│ <span class="pl-c1">6</span>   │ <span class="pl-c1">1</span>      │ <span class="pl-c1">0.0</span>     │ <span class="pl-c1">1</span>     │ <span class="pl-c1">74</span>    │ <span class="pl-c1">1344.63</span> │ <span class="pl-c1">1679.77</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-c1">0.273454</span> │ <span class="pl-k">-</span><span class="pl-c1">0.638544</span> │ <span class="pl-c1">FOCEI</span>()     │ <span class="pl-k">-</span><span class="pl-c1">0.189025</span> │ <span class="pl-k">-</span><span class="pl-c1">0.199515</span> │ <span class="pl-c1">FOCEI</span>()     │</pre></div>
+<h3><a id="user-content-simulate-from-fitted-model" class="anchor" aria-hidden="true" href="#simulate-from-fitted-model"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Simulate from fitted model</h3>
+<p>In order to simulate from a fitted model <code>simobs</code> can be used. The final parameters of the fitted models are available in the <code>coef(res)</code></p>
+<div class="highlight highlight-source-julia"><pre>fitparam <span class="pl-k">=</span> <span class="pl-c1">coef</span>(res)</pre></div>
+<p>You can then pass these optimized parameters into a <code>simobs</code> call and pass the same dataset or simulate into a different design</p>
+<div class="highlight highlight-source-julia"><pre>ev_sd_high_dose <span class="pl-k">=</span> <span class="pl-c1">DosageRegimen</span>(<span class="pl-c1">200</span>, time<span class="pl-k">=</span><span class="pl-c1">0</span>, addl<span class="pl-k">=</span><span class="pl-c1">4</span>, ii<span class="pl-k">=</span><span class="pl-c1">48</span>)
+s2 <span class="pl-k">=</span> <span class="pl-c1">Subject</span>(id<span class="pl-k">=</span><span class="pl-c1">1</span>,  evs<span class="pl-k">=</span>ev_sd_high_dose, cvs<span class="pl-k">=</span>(isPM<span class="pl-k">=</span><span class="pl-c1">1</span>, wt<span class="pl-k">=</span><span class="pl-c1">70</span>))</pre></div>
+<div class="highlight highlight-source-julia"><pre>obs <span class="pl-k">=</span> <span class="pl-c1">simobs</span>(model, s2, fitparam, obstimes<span class="pl-k">=</span><span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">160</span>)
+<span class="pl-c1">plot</span>(obs)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/1814174/62414975-a8c87a00-b5f0-11e9-9176-10fe37aef986.png"><img src="https://user-images.githubusercontent.com/1814174/62414975-a8c87a00-b5f0-11e9-9176-10fe37aef986.png" alt="highdose" style="max-width:100%;"></a></p>
+<h2><a id="user-content-visualization" class="anchor" aria-hidden="true" href="#visualization"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Visualization</h2>
+<p>There are several plot recipes you can use to visualize your model fit.  These are mainly provided by the <a href="https://github.com/PumasAI/PumasPlots.jl"><code>PumasPlots.jl</code></a> package (currently unregistered, add via URL).</p>
+<p>PumasPlots provides recipes to visualize <code>FittedPumasModel</code>s, and also has powerful grouping functionality.  While some plot types are specialized for fitted models, you can use all of Plots' features by converting your result to a DataFrame (using <code>DataFrame(inspect(res))</code>).</p>
+<ul>
+<li>
+<p><code>convergence(res::FittedPumasModel)</code> - plots the optimization trajectory of all variables.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">convergence</span>(res)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/32143268/64719839-1ccf2b00-d497-11e9-9b3f-98730295bc36.png"><img src="https://user-images.githubusercontent.com/32143268/64719839-1ccf2b00-d497-11e9-9b3f-98730295bc36.png" alt="convergence" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p><code>etacov(res::FittedPumasModel)</code> - plots the covariates of the model against the etas.  Keyword arguments are described in the docstring - essentially, you can use any column in <code>DataFrame(inspect(res))</code> to plot.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">etacov</span>(res; catmap <span class="pl-k">=</span> (isPM <span class="pl-k">=</span> <span class="pl-c1">true</span>,))</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/32143268/64719841-1ccf2b00-d497-11e9-84fe-e4efc35f7c0c.png"><img src="https://user-images.githubusercontent.com/32143268/64719841-1ccf2b00-d497-11e9-84fe-e4efc35f7c0c.png" alt="etacov" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p><code>resplot(res::FittedPumasModel)</code> - plots the covariates of the model against their residuals, determined by the approximation type.  Accepts many of the same kwargs as <code>etacov</code>.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">resplot</span>(res; catmap <span class="pl-k">=</span> (isPM <span class="pl-k">=</span> <span class="pl-c1">true</span>,))</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/32143268/64719842-1ccf2b00-d497-11e9-9f94-43fcd170f5b5.png"><img src="https://user-images.githubusercontent.com/32143268/64719842-1ccf2b00-d497-11e9-9f94-43fcd170f5b5.png" alt="resplot" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p><code>corrplot(empirical_bayes(res); labels)</code> - overload of the <code>StatsPlots</code> corrplot, for etas.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">corrplot</span>(<span class="pl-c1">empirical_bayes</span>(res); labels <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">"</span>eta_1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>eta_2<span class="pl-pds">"</span></span>])</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/32143268/64719840-1ccf2b00-d497-11e9-8bc5-e961a60d628a.png"><img src="https://user-images.githubusercontent.com/32143268/64719840-1ccf2b00-d497-11e9-8bc5-e961a60d628a.png" alt="corrplot" style="max-width:100%;"></a></p>
+</li>
+</ul>
+<p>Most of these plotting functions have docstrings, which can be accessed in the REPL help mode by <code>&gt;? resplot</code> (for example).</p>
+<p>In addition to these specialized plots, PumasPlots offers powerful grouping functionality.  By working with the DataFrame of your results (<code>DataFrame(inspect(res))</code>), you can create arbitrary plots, and by using the <code>plot_grouped</code> function, you can create panelled (a.k.a. grouped) plots.</p>
+<div class="highlight highlight-source-julia"><pre>df <span class="pl-k">=</span> <span class="pl-c1">DataFrame</span>(<span class="pl-c1">inspect</span>(res))
+gdf <span class="pl-k">=</span> <span class="pl-c1">groupby</span>(df, <span class="pl-c1">:isPM</span>) <span class="pl-c"><span class="pl-c">#</span> group by categorical covariate</span>
+
+<span class="pl-c1">plot_grouped</span>(gdf) <span class="pl-k">do</span> subdf <span class="pl-c"><span class="pl-c">#</span> `plot_grouped` will iterate through the groups of `gdf`</span>
+    <span class="pl-c1">boxplot</span>(subdf<span class="pl-k">.</span>wt, subdf<span class="pl-k">.</span>wres; xlabel <span class="pl-k">=</span> <span class="pl-c1">:wt</span>, ylabel <span class="pl-k">=</span> <span class="pl-c1">:wres</span>, legend <span class="pl-k">=</span> <span class="pl-c1">:none</span>) <span class="pl-c"><span class="pl-c">#</span> you can use any arbitrary plotting function here</span>
+<span class="pl-k">end</span></pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="https://user-images.githubusercontent.com/32143268/64720345-4177d280-d498-11e9-8bea-6270e8d227b9.png"><img src="https://user-images.githubusercontent.com/32143268/64720345-4177d280-d498-11e9-8bea-6270e8d227b9.png" alt="groupedboxplot" style="max-width:100%;"></a></p>
+</article></div>

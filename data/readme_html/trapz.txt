@@ -1,0 +1,81 @@
+<div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content p-5" itemprop="text"><h1><a id="user-content-trapzjl" class="anchor" aria-hidden="true" href="#trapzjl"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Trapz.jl</h1>
+<p>A simple Julia package to perform trapezoidal integration over common Julia arrays.</p>
+<p>the package is now registered on Julia Registry, so it can be added as follows</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">import</span> Pkg; Pkg<span class="pl-k">.</span><span class="pl-s"><span class="pl-pds"><span class="pl-c1">pkg</span>"</span>add Trapz<span class="pl-pds">"</span></span></pre></div>
+<h2><a id="user-content-example-usage" class="anchor" aria-hidden="true" href="#example-usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example Usage:</h2>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> BenchmarkTools,Trapz
+vx<span class="pl-k">=</span><span class="pl-c1">range</span>(<span class="pl-c1">0</span>,<span class="pl-c1">1</span>,length<span class="pl-k">=</span><span class="pl-c1">100</span>)
+vy<span class="pl-k">=</span><span class="pl-c1">range</span>(<span class="pl-c1">0</span>,<span class="pl-c1">2</span>,length<span class="pl-k">=</span><span class="pl-c1">200</span>)
+vz<span class="pl-k">=</span><span class="pl-c1">range</span>(<span class="pl-c1">0</span>,<span class="pl-c1">3</span>,length<span class="pl-k">=</span><span class="pl-c1">300</span>)
+M<span class="pl-k">=</span>[x<span class="pl-k">^</span><span class="pl-c1">2</span><span class="pl-k">+</span>y<span class="pl-k">^</span><span class="pl-c1">2</span><span class="pl-k">+</span>z<span class="pl-k">^</span><span class="pl-c1">2</span> <span class="pl-k">for</span> x<span class="pl-k">=</span>vx,y<span class="pl-k">=</span>vy,z<span class="pl-k">=</span>vz]
+<span class="pl-c1">@show</span> <span class="pl-c1">trapz</span>((vx,vy,vz), M);
+</pre></div>
+<pre><code>trapz((vx, vy, vz), M) = 28.000303707970264
+</code></pre>
+<h1><a id="user-content-benchmarks" class="anchor" aria-hidden="true" href="#benchmarks"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Benchmarks</h1>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">@benchmark</span> <span class="pl-c1">trapz</span>((<span class="pl-k">$</span>vx,<span class="pl-k">$</span>vy,<span class="pl-k">$</span>vz),<span class="pl-k">$</span>M)</pre></div>
+<pre><code>BenchmarkTools.Trial:
+  memory estimate:  347.31 KiB
+  allocs estimate:  607
+  --------------
+  minimum time:     7.459 ms (0.00% GC)
+  median time:      7.657 ms (0.00% GC)
+  mean time:        7.720 ms (0.24% GC)
+  maximum time:     10.711 ms (0.00% GC)
+  --------------
+  samples:          647
+  evals/sample:     1
+</code></pre>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">@benchmark</span> <span class="pl-c1">trapz</span>((<span class="pl-k">$</span>vy, <span class="pl-k">$</span>vz),<span class="pl-k">$</span>M)</pre></div>
+<pre><code>BenchmarkTools.Trial:
+  memory estimate:  342.53 KiB
+  allocs estimate:  506
+  --------------
+  minimum time:     7.435 ms (0.00% GC)
+  median time:      7.681 ms (0.00% GC)
+  mean time:        7.743 ms (0.23% GC)
+  maximum time:     13.389 ms (0.00% GC)
+  --------------
+  samples:          645
+  evals/sample:     1
+</code></pre>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">@benchmark</span> <span class="pl-c1">trapz</span>(<span class="pl-k">$</span>vy,<span class="pl-k">$</span>M,<span class="pl-c1">2</span>)</pre></div>
+<pre><code>BenchmarkTools.Trial:
+  memory estimate:  482.02 KiB
+  allocs estimate:  214
+  --------------
+  minimum time:     9.497 ms (0.00% GC)
+  median time:      9.763 ms (0.00% GC)
+  mean time:        9.991 ms (0.23% GC)
+  maximum time:     15.369 ms (0.00% GC)
+  --------------
+  samples:          501
+  evals/sample:     1
+</code></pre>
+<h2><a id="user-content-benchmark-when-used-inefficiently" class="anchor" aria-hidden="true" href="#benchmark-when-used-inefficiently"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Benchmark, when used inefficiently:</h2>
+<p>This code is optimized in order to perform the integral the fastest over the last dimension first, here instead we are performing integral in opposite order e.g. first x, then y, at last over z</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">@benchmark</span> <span class="pl-c1">trapz</span>((<span class="pl-k">$</span>vz,<span class="pl-k">$</span>vy,<span class="pl-k">$</span>vx),<span class="pl-k">$</span>M,(<span class="pl-c1">3</span>,<span class="pl-c1">2</span>,<span class="pl-c1">1</span>))</pre></div>
+<pre><code>BenchmarkTools.Trial:
+  memory estimate:  973.50 KiB
+  allocs estimate:  628
+  --------------
+  minimum time:     60.976 ms (0.00% GC)
+  median time:      63.567 ms (0.00% GC)
+  mean time:        65.852 ms (0.07% GC)
+  maximum time:     91.881 ms (0.00% GC)
+  --------------
+  samples:          76
+  evals/sample:     1
+</code></pre>
+<h2><a id="user-content-comparison-to-numpy-trapz" class="anchor" aria-hidden="true" href="#comparison-to-numpy-trapz"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Comparison to Numpy trapz</h2>
+<p>At the time of writing this function when used correctly is faster than numpy's equivalent function.
+Indeed the timings for Anaconda Python 3.7.3 with Numpy 1.16.2 on the same machine with same initial conditions on M,x,y,z are:</p>
+<div class="highlight highlight-source-python"><pre><span class="pl-k">%%</span>timeit
+np.trapz(np.trapz(np.trapz(M,x,<span class="pl-v">axis</span><span class="pl-k">=</span><span class="pl-c1">0</span>),y,<span class="pl-v">axis</span><span class="pl-k">=</span><span class="pl-c1">0</span>),z,<span class="pl-v">axis</span><span class="pl-k">=</span><span class="pl-c1">0</span>)</pre></div>
+<pre><code>59.3 ms ± 1.45 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</code></pre>
+<div class="highlight highlight-source-python"><pre><span class="pl-k">%%</span>timeit
+np.trapz(np.trapz(np.trapz(M,z,<span class="pl-v">axis</span><span class="pl-k">=</span><span class="pl-c1">2</span>),y,<span class="pl-v">axis</span><span class="pl-k">=</span><span class="pl-c1">1</span>),x,<span class="pl-v">axis</span><span class="pl-k">=</span><span class="pl-c1">0</span>)</pre></div>
+<pre><code>74.7 ms ± 1.5 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</code></pre>
+</article></div>

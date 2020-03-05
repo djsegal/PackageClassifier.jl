@@ -1,0 +1,35 @@
+<div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content p-5" itemprop="text"><h1><a id="user-content-weightsandbiasloggerjl" class="anchor" aria-hidden="true" href="#weightsandbiasloggerjl"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WeightsAndBiasLogger.jl</h1>
+<p><a href="https://travis-ci.org/xukai92/WeightsAndBiasLogger.jl" rel="nofollow"><img src="https://camo.githubusercontent.com/be22f3e9d96b888a7f743083c9b49a57dd821036/68747470733a2f2f7472617669732d63692e6f72672f78756b616939322f57656967687473416e64426961734c6f676765722e6a6c2e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/xukai92/WeightsAndBiasLogger.jl.svg?branch=master" style="max-width:100%;"></a>
+<a href="https://coveralls.io/github/xukai92/WeightsAndBiasLogger.jl?branch=master" rel="nofollow"><img src="https://camo.githubusercontent.com/fc205c19ed60bd58a00d863de6faec270599cd45/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f78756b616939322f57656967687473416e64426961734c6f676765722e6a6c2f62616467652e7376673f6272616e63683d6d6173746572" alt="Coverage Status" data-canonical-src="https://coveralls.io/repos/github/xukai92/WeightsAndBiasLogger.jl/badge.svg?branch=master" style="max-width:100%;"></a></p>
+<h2><a id="user-content-prerequisite" class="anchor" aria-hidden="true" href="#prerequisite"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prerequisite</h2>
+<ol>
+<li>Install W&amp;B and set it up following <a href="https://docs.wandb.com/quickstart" rel="nofollow">here</a></li>
+<li>Install <a href="https://github.com/JuliaPy/PyCall.jl">PyCall.jl</a></li>
+<li>Make sure PyCall is configured to use the same Python env as W&amp;B is installed
+<ul>
+<li><a href="https://github.com/JuliaPy/PyCall.jl#specifying-the-python-version">https://github.com/JuliaPy/PyCall.jl#specifying-the-python-version</a></li>
+</ul>
+</li>
+</ol>
+<h2><a id="user-content-installation" class="anchor" aria-hidden="true" href="#installation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h2>
+<ul>
+<li>From REPL: <code>] add https://github.com/xukai92/WeightsAndBiasLogger.jl</code></li>
+<li>By code: <code>using Pkg; pkg"add https://github.com/xukai92/WeightsAndBiasLogger.jl"</code></li>
+</ul>
+<h2><a id="user-content-example" class="anchor" aria-hidden="true" href="#example"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h2>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> Logging, WeightsAndBiasLogger
+
+logger <span class="pl-k">=</span> <span class="pl-c1">WBLogger</span>(project<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>sample-project<span class="pl-pds">"</span></span>)
+
+args <span class="pl-k">=</span> (n_epochs<span class="pl-k">=</span><span class="pl-c1">1_000</span>, lr<span class="pl-k">=</span><span class="pl-c1">1e-3</span>)
+
+<span class="pl-c1">config!</span>(logger, args)
+
+<span class="pl-c1">with_logger</span>(logger) <span class="pl-k">do</span>
+    loss <span class="pl-k">=</span> <span class="pl-c1">0</span>
+    <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span>args<span class="pl-k">.</span>n_epochs
+        loss <span class="pl-k">+=</span> <span class="pl-c1">randn</span>()
+        <span class="pl-c1">@info</span> <span class="pl-s"><span class="pl-pds">"</span>train<span class="pl-pds">"</span></span> i<span class="pl-k">=</span>i loss<span class="pl-k">=</span>loss
+    <span class="pl-k">end</span>
+<span class="pl-k">end</span></pre></div>
+</article></div>

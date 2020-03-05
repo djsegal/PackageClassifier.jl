@@ -1,0 +1,153 @@
+<div id="readme" class="md" data-path="README.md"><article class="markdown-body entry-content p-5" itemprop="text"><h1><a id="user-content-graphrecipes" class="anchor" aria-hidden="true" href="#graphrecipes"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GraphRecipes</h1>
+<p>The repository formerly known as PlotRecipes</p>
+<p><a href="https://travis-ci.org/JuliaPlots/GraphRecipes.jl" rel="nofollow"><img src="https://camo.githubusercontent.com/316222b5dd46ebc9c7626c666952565d496c653a/68747470733a2f2f7472617669732d63692e6f72672f4a756c6961506c6f74732f4772617068526563697065732e6a6c2e7376673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://travis-ci.org/JuliaPlots/GraphRecipes.jl.svg?branch=master" style="max-width:100%;"></a></p>
+<h3><a id="user-content-primary-author-thomas-breloff-tbreloff" class="anchor" aria-hidden="true" href="#primary-author-thomas-breloff-tbreloff"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Primary author: Thomas Breloff (@tbreloff)</h3>
+<p>This repo maintains a collection of recipes for graph analysis, and is a reduced and refactored version of the previous PlotRecipes. It uses the powerful machinery of <a href="https://github.com/tbreloff/Plots.jl">Plots</a> and <a href="https://github.com/JuliaPlots/RecipesBase.jl">RecipesBase</a> to turn simple transformations into flexible visualizations.</p>
+<h1><a id="user-content-examples" class="anchor" aria-hidden="true" href="#examples"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h1>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> GraphRecipes
+<span class="pl-k">using</span> Plots
+
+<span class="pl-k">const</span> n <span class="pl-k">=</span> <span class="pl-c1">15</span>
+<span class="pl-k">const</span> A <span class="pl-k">=</span> Float64[ <span class="pl-c1">rand</span>() <span class="pl-k">&lt;</span> <span class="pl-c1">0.5</span> ? <span class="pl-c1">0</span> : <span class="pl-c1">rand</span>() <span class="pl-k">for</span> i<span class="pl-k">=</span><span class="pl-c1">1</span><span class="pl-k">:</span>n, j<span class="pl-k">=</span><span class="pl-c1">1</span><span class="pl-k">:</span>n]
+<span class="pl-k">for</span> i<span class="pl-k">=</span><span class="pl-c1">1</span><span class="pl-k">:</span>n
+    A[i, <span class="pl-c1">1</span><span class="pl-k">:</span>i<span class="pl-k">-</span><span class="pl-c1">1</span>] <span class="pl-k">=</span> A[<span class="pl-c1">1</span><span class="pl-k">:</span>i<span class="pl-k">-</span><span class="pl-c1">1</span>, i]
+    A[i, i] <span class="pl-k">=</span> <span class="pl-c1">0</span>
+<span class="pl-k">end</span>
+
+<span class="pl-c1">graphplot</span>(A,
+          markersize <span class="pl-k">=</span> <span class="pl-c1">0.2</span>,
+          node_weights <span class="pl-k">=</span> <span class="pl-c1">1</span><span class="pl-k">:</span>n,
+          markercolor <span class="pl-k">=</span> <span class="pl-c1">range</span>(<span class="pl-s"><span class="pl-pds"><span class="pl-c1">colorant</span>"</span>yellow<span class="pl-pds">"</span></span>, stop<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds"><span class="pl-c1">colorant</span>"</span>red<span class="pl-pds">"</span></span>, length<span class="pl-k">=</span>n),
+          names <span class="pl-k">=</span> <span class="pl-c1">1</span><span class="pl-k">:</span>n,
+          fontsize <span class="pl-k">=</span> <span class="pl-c1">10</span>,
+          linecolor <span class="pl-k">=</span> <span class="pl-c1">:darkgrey</span>
+          )</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/random_labelled_graph.png"><img src="assets/random_labelled_graph.png" alt="" style="max-width:100%;"></a></p>
+<p>Now plot the graph in three dimensions.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">graphplot</span>(A,
+           node_weights <span class="pl-k">=</span> <span class="pl-c1">1</span><span class="pl-k">:</span>n,
+           markercolor <span class="pl-k">=</span> <span class="pl-c1">:darkgray</span>,
+           dim <span class="pl-k">=</span> <span class="pl-c1">3</span>,
+           markersize <span class="pl-k">=</span> <span class="pl-c1">5</span>,
+           linecolor <span class="pl-k">=</span> <span class="pl-c1">:darkgrey</span>,
+           linealpha <span class="pl-k">=</span> <span class="pl-c1">0.5</span>
+       )
+</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/random_3d_graph.png"><img src="assets/random_3d_graph.png" alt="" style="max-width:100%;"></a></p>
+<h3><a id="user-content-lightgraphsjl" class="anchor" aria-hidden="true" href="#lightgraphsjl"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LightGraphs.jl</h3>
+<p>You can visualize a <code>LightGraphs.AbstractGraph</code> by passing it to <code>graphplot</code>.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> GraphRecipes, Plots
+<span class="pl-k">using</span> LightGraphs
+
+g <span class="pl-k">=</span> <span class="pl-c1">wheel_graph</span>(<span class="pl-c1">10</span>)
+<span class="pl-c1">graphplot</span>(g, curves<span class="pl-k">=</span><span class="pl-c1">false</span>)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/LightGraphs.png"><img src="assets/LightGraphs.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-directed-graphs" class="anchor" aria-hidden="true" href="#directed-graphs"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Directed Graphs</h4>
+<p>I you pass <code>graphplot</code> a <code>LightGraphs.DiGraph</code> or an asymmetric adjacency matrix, then <code>graphplot</code> will use arrows to indicate the direction of the edges. Note that using the <code>arrow</code> attribute with the <code>pyplot</code> backend will allow you to control the aesthetics of the arrows.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> GraphRecipes, Plots
+g <span class="pl-k">=</span> [<span class="pl-c1">0</span> <span class="pl-c1">1</span> <span class="pl-c1">1</span>;
+     <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">1</span>;
+     <span class="pl-c1">0</span> <span class="pl-c1">1</span> <span class="pl-c1">0</span>]
+
+<span class="pl-c1">graphplot</span>(g, names<span class="pl-k">=</span><span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">3</span>, curvature_scalar<span class="pl-k">=</span><span class="pl-c1">0.1</span>)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/directed.png"><img src="assets/directed.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-edge-labels" class="anchor" aria-hidden="true" href="#edge-labels"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Edge Labels</h4>
+<p>Edge labels can be passed via the <code>edgelabel</code> keyword argument. You can pass edge labels
+as a dictionary of <code>(si::Int, di::Int) =&gt; label</code>, where <code>si</code>, <code>di</code> are the indices of the source and destiny nodes for the edge being labeled. Alternatively, you can pass a matrix or a vector of labels. <code>graphplot</code> will try to convert any label you pass it into a string unless you pass one of <code>missing</code>, <code>NaN</code>, <code>nothing</code>, <code>false</code> or <code>""</code>, in which case, <code>graphplot</code> will skip the label.</p>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> GraphRecipes, Plots
+<span class="pl-k">using</span> LightGraphs
+
+n <span class="pl-k">=</span> <span class="pl-c1">8</span>
+g <span class="pl-k">=</span> <span class="pl-c1">wheel_digraph</span>(n)
+edgelabel_dict <span class="pl-k">=</span> <span class="pl-c1">Dict</span>()
+edgelabel_mat <span class="pl-k">=</span> <span class="pl-c1">Array</span><span class="pl-c1">{String}</span>(undef, n, n)
+<span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span>n
+    <span class="pl-k">for</span> j <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span>n
+        edgelabel_mat[i, j] <span class="pl-k">=</span> edgelabel_dict[(i, j)] <span class="pl-k">=</span> <span class="pl-c1">string</span>(<span class="pl-s"><span class="pl-pds">"</span>edge <span class="pl-pds">"</span></span>, i, <span class="pl-s"><span class="pl-pds">"</span> to <span class="pl-pds">"</span></span>, j)
+    <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+edgelabel_vec <span class="pl-k">=</span> edgelabel_mat[:]
+
+<span class="pl-c1">graphplot</span>(g, names<span class="pl-k">=</span><span class="pl-c1">1</span><span class="pl-k">:</span>n, edgelabel<span class="pl-k">=</span>edgelabel_dict, curves<span class="pl-k">=</span><span class="pl-c1">false</span>, nodeshape<span class="pl-k">=</span><span class="pl-c1">:rect</span>)  <span class="pl-c"><span class="pl-c">#</span> Or edgelabel=edgelabel_mat, or edgelabel=edgelabel_vec.</span></pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/edgelabel.png"><img src="assets/edgelabel.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-self-edges" class="anchor" aria-hidden="true" href="#self-edges"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Self edges</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> LightGraphs, Plots, GraphRecipes
+
+g <span class="pl-k">=</span> [<span class="pl-c1">1</span> <span class="pl-c1">1</span> <span class="pl-c1">1</span>;
+     <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">1</span>;
+     <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">1</span>]
+
+<span class="pl-c1">graphplot</span>(<span class="pl-c1">DiGraph</span>(g), self_edge_size<span class="pl-k">=</span><span class="pl-c1">0.2</span>)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/selfedges.png"><img src="assets/selfedges.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-multigraphs" class="anchor" aria-hidden="true" href="#multigraphs"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multigraphs</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-c1">graphplot</span>([[<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>,<span class="pl-c1">2</span>],[<span class="pl-c1">1</span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>],[<span class="pl-c1">1</span>]], names<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>node_<span class="pl-pds">"</span></span><span class="pl-k">.*</span><span class="pl-c1">string</span>.(<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">3</span>), nodeshape<span class="pl-k">=</span><span class="pl-c1">:circle</span>, self_edge_size<span class="pl-k">=</span><span class="pl-c1">0.25</span>)</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/multigraphs.png"><img src="assets/multigraphs.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-arc-and-chord-diagrams" class="anchor" aria-hidden="true" href="#arc-and-chord-diagrams"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arc and chord diagrams</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> LinearAlgebra
+<span class="pl-k">using</span> SparseArrays
+<span class="pl-k">using</span> GraphRecipes
+<span class="pl-k">using</span> Plots
+
+adjmat <span class="pl-k">=</span> <span class="pl-c1">Symmetric</span>(<span class="pl-c1">sparse</span>(<span class="pl-c1">rand</span>(<span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">1</span>,<span class="pl-c1">8</span>,<span class="pl-c1">8</span>)))
+
+<span class="pl-c1">plot</span>(
+    <span class="pl-c1">graphplot</span>(adjmat,
+              method<span class="pl-k">=</span><span class="pl-c1">:chorddiagram</span>,
+              names<span class="pl-k">=</span>[<span class="pl-c1">text</span>(<span class="pl-c1">string</span>(i), <span class="pl-c1">8</span>) <span class="pl-k">for</span> i <span class="pl-k">in</span> <span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">8</span>],
+              linecolor<span class="pl-k">=</span><span class="pl-c1">:black</span>,
+              fillcolor<span class="pl-k">=</span><span class="pl-c1">:lightgray</span>),
+
+    <span class="pl-c1">graphplot</span>(adjmat,
+              method<span class="pl-k">=</span><span class="pl-c1">:arcdiagram</span>,
+              markersize<span class="pl-k">=</span><span class="pl-c1">0.5</span>,
+              linecolor<span class="pl-k">=</span><span class="pl-c1">:black</span>,
+              markercolor<span class="pl-k">=</span><span class="pl-c1">:black</span>)
+    )
+</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/arc_chord_diagrams.png"><img src="assets/arc_chord_diagrams.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-julia-code----ast" class="anchor" aria-hidden="true" href="#julia-code----ast"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Julia code -- AST</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> GraphRecipes
+<span class="pl-k">using</span> Plots
+<span class="pl-c1">default</span>(size<span class="pl-k">=</span>(<span class="pl-c1">1000</span>, <span class="pl-c1">1000</span>))
+
+code <span class="pl-k">=</span> :(
+<span class="pl-k">function</span> <span class="pl-en">mysum</span>(list)
+    out <span class="pl-k">=</span> <span class="pl-c1">0</span>
+    <span class="pl-k">for</span> value <span class="pl-k">in</span> list
+        out <span class="pl-k">+=</span> value
+    <span class="pl-k">end</span>
+    out
+<span class="pl-k">end</span>
+)
+
+<span class="pl-c1">plot</span>(code, fontsize<span class="pl-k">=</span><span class="pl-c1">12</span>, shorten<span class="pl-k">=</span><span class="pl-c1">0.01</span>, axis_buffer<span class="pl-k">=</span><span class="pl-c1">0.15</span>, nodeshape<span class="pl-k">=</span><span class="pl-c1">:rect</span>)
+</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/AST_example.png"><img src="assets/AST_example.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-julia-type-trees" class="anchor" aria-hidden="true" href="#julia-type-trees"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Julia Type Trees</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> GraphRecipes
+<span class="pl-k">using</span> Plots
+<span class="pl-c1">default</span>(size<span class="pl-k">=</span>(<span class="pl-c1">1000</span>, <span class="pl-c1">1000</span>))
+
+<span class="pl-c1">plot</span>(AbstractFloat, method<span class="pl-k">=</span><span class="pl-c1">:tree</span>, fontsize<span class="pl-k">=</span><span class="pl-c1">10</span>, nodeshape<span class="pl-k">=</span><span class="pl-c1">:ellipse</span>)
+</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/julia_type_tree.png"><img src="assets/julia_type_tree.png" alt="" style="max-width:100%;"></a></p>
+<h4><a id="user-content-abstracttrees-trees" class="anchor" aria-hidden="true" href="#abstracttrees-trees"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>AbstractTrees</code> Trees</h4>
+<div class="highlight highlight-source-julia"><pre><span class="pl-k">using</span> AbstractTrees
+
+AbstractTrees<span class="pl-k">.</span><span class="pl-en">children</span>(d<span class="pl-k">::</span><span class="pl-c1">Dict</span>) <span class="pl-k">=</span> [p <span class="pl-k">for</span> p <span class="pl-k">in</span> d]
+AbstractTrees<span class="pl-k">.</span><span class="pl-en">children</span>(p<span class="pl-k">::</span><span class="pl-c1">Pair</span>) <span class="pl-k">=</span> AbstractTrees<span class="pl-k">.</span><span class="pl-c1">children</span>(p[<span class="pl-c1">2</span>])
+<span class="pl-k">function</span> AbstractTrees<span class="pl-k">.</span><span class="pl-en">printnode</span>(io<span class="pl-k">::</span><span class="pl-c1">IO</span>, p<span class="pl-k">::</span><span class="pl-c1">Pair</span>)
+    str <span class="pl-k">=</span> <span class="pl-c1">isempty</span>(AbstractTrees<span class="pl-k">.</span><span class="pl-c1">children</span>(p[<span class="pl-c1">2</span>])) ? <span class="pl-c1">string</span>(p[<span class="pl-c1">1</span>], <span class="pl-s"><span class="pl-pds">"</span>: <span class="pl-pds">"</span></span>, p[<span class="pl-c1">2</span>]) : <span class="pl-c1">string</span>(p[<span class="pl-c1">1</span>], <span class="pl-s"><span class="pl-pds">"</span>: <span class="pl-pds">"</span></span>)
+    <span class="pl-c1">print</span>(io, str)
+<span class="pl-k">end</span>
+
+d <span class="pl-k">=</span> <span class="pl-c1">Dict</span>(<span class="pl-c1">:a</span> <span class="pl-k">=&gt;</span> <span class="pl-c1">2</span>,<span class="pl-c1">:d</span> <span class="pl-k">=&gt;</span> <span class="pl-c1">Dict</span>(<span class="pl-c1">:b</span> <span class="pl-k">=&gt;</span> <span class="pl-c1">4</span>,<span class="pl-c1">:c</span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">"</span>Hello<span class="pl-pds">"</span></span>),<span class="pl-c1">:e</span> <span class="pl-k">=&gt;</span> <span class="pl-c1">5.0</span>)
+
+<span class="pl-k">using</span> GraphRecipes
+<span class="pl-k">using</span> Plots
+<span class="pl-c1">default</span>(size<span class="pl-k">=</span>(<span class="pl-c1">1000</span>, <span class="pl-c1">1000</span>))
+
+<span class="pl-c1">plot</span>(<span class="pl-c1">TreePlot</span>(d), method<span class="pl-k">=</span><span class="pl-c1">:tree</span>, fontsize<span class="pl-k">=</span><span class="pl-c1">10</span>, nodeshape<span class="pl-k">=</span><span class="pl-c1">:ellipse</span>)
+</pre></div>
+<p><a target="_blank" rel="noopener noreferrer" href="assets/julia_dict_tree.png"><img src="assets/julia_dict_tree.png" alt="" style="max-width:100%;"></a></p>
+</article></div>
