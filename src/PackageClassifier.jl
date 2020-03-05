@@ -21,7 +21,11 @@ module PackageClassifier
   include("pull_decibans.jl")
   include("pull_general.jl")
 
+  include("combine_datasets.jl")
+
   decibans_db = pull_decibans()
   general_db = pull_general()
+
+  decibans_db, general_db = combine_datasets(decibans_db, general_db)
 
 end
