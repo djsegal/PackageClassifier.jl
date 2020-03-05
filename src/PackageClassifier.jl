@@ -16,4 +16,6 @@ module PackageClassifier
   using Languages
   using TextAnalysis
 
+  include("custom_text.jl")
+
 end
