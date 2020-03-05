@@ -28,4 +28,7 @@ module PackageClassifier
 
   decibans_db, general_db = combine_datasets(decibans_db, general_db)
 
+  export decibans_db
+  export general_db
+
 end
