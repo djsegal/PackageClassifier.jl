@@ -1,5 +1,19 @@
 module PackageClassifier
 
-greet() = print("Hello World!")
+  using Pkg
+  using Revise
 
-end # module
+  using CSV
+  using HTTP
+  using JSON
+
+  using DataFrames
+  using StatsBase
+
+  using Gumbo
+  using AbstractTrees
+
+  using Languages
+  using TextAnalysis
+
+end
